@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "828963528268",
+    "firebase_url": "https://maggieapp-24825.firebaseio.com",
+    "project_id": "maggieapp-24825",
+    "storage_bucket": "maggieapp-24825.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:828963528268:android:6feb9a0c8821561d",
+        "android_client_info": {
+          "package_name": "com.newproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "828963528268-t4mgr6d8t3gea99qmafrscr5btrh2j96.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMtwky3_FQaJQjA1qEEPW3pxzfUZEmXJU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "828963528268-t4mgr6d8t3gea99qmafrscr5btrh2j96.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
