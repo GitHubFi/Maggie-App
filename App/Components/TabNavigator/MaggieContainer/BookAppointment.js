@@ -18,7 +18,7 @@ class BookAppointment extends Component {
         this.state = {
             check1: false, check2: false, check3: false, check4: false, check5: false, check6: false, check7: false, check8: false, check9: false, check10: false,
             value1: "", value2: "", value3: "", value4: "", value5: "", value6: "", value7: "", value8: "", value9: "", value10: "",
-            chosenDate: new Date(), selected2: undefined, name: "", email: "", number: "", time: "", note: "", getDate: false, meraj:""
+            chosenDate: new Date(), selected2: undefined, name: "", email: "", number: "", time: "", note: "", getDate: false, 
         }
         this.setDate = this.setDate.bind(this);
 
