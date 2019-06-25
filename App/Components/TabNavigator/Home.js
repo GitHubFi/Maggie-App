@@ -54,7 +54,7 @@ export default class Home extends Component {
 
     componentWillMount() {
         firebase.auth().onAuthStateChanged(async function (user) {
-            console.log(user, "current user")
+            console.log(user, " firebase.auth().onAuthStateChanged")
             // console.log(error)
 
             if (user) {
@@ -403,7 +403,7 @@ export default class Home extends Component {
 
                                                 }}
                                                 onPress={() => {
-                                                    // this.props.navigation.navigate("chat");
+                                                    this.props.navigation.navigate("chat");
                                                 }}
                                             >
                                                 <Image
