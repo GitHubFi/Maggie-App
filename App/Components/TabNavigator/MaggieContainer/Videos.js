@@ -273,9 +273,13 @@ export default class Videos extends Component<Props> {
                         alignSelf: "center",
                         textAlign: "center",
                         flex: 1,
-                        marginLeft: -10
+                        marginLeft: -30,
+                        fontSize:width/23,
+                        
                     },
-                    headerStyle: { backgroundColor: "#fff" }
+                    headerStyle: { backgroundColor: "#fff" 
+                    ,
+                    fontFamily: "OpenSans-Semi"}
                 };
                 headerRight: <View />;
             };

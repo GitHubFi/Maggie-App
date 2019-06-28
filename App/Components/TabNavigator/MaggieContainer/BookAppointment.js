@@ -3,7 +3,7 @@ import { StyleSheet, View, TouchableOpacity, ImageBackground, Platform, Dimensio
 const { width, height, scale, fontScale } = Dimensions.get("window");
 import {
     Input, Button, Spinner, Form, Item, Picker, Label, Container,
-    Header, Content, ListItem, CheckBox, Text, Body, DatePicker, Textarea
+    Header, Content, ListItem, CheckBox, Text, Body, DatePicker, Textarea, 
 } from "native-base";
 import Icon from "react-native-vector-icons/Ionicons";
 import { connect } from "react-redux";
@@ -18,7 +18,7 @@ class BookAppointment extends Component {
         this.state = {
             check1: false, check2: false, check3: false, check4: false, check5: false, check6: false, check7: false, check8: false, check9: false, check10: false,
             value1: "", value2: "", value3: "", value4: "", value5: "", value6: "", value7: "", value8: "", value9: "", value10: "",
-            chosenDate: new Date(), selected2: undefined, name: "", email: "", number: "", time: "", note: "", getDate: false, 
+            chosenDate: new Date(), selected2: undefined, name: "", email: "", number: "", time: "", note: "", getDate: false,
         }
         this.setDate = this.setDate.bind(this);
 
@@ -48,8 +48,8 @@ class BookAppointment extends Component {
         const note = this.state.note
         const getDate = this.state.getDate
 
-      
-       
+
+
 
         if (name === "") {
             ToastAndroid.show("Please Enter your Name", ToastAndroid.SHORT);
@@ -276,9 +276,13 @@ class BookAppointment extends Component {
                 alignSelf: "center",
                 textAlign: "center",
                 flex: 1,
-                marginLeft: -10
+                fontSize:width/23,
+                marginLeft: -20,
+               
+                
             },
-            headerStyle: { backgroundColor: "#fff" }
+            headerStyle: { backgroundColor: "#fff",
+            fontFamily: "OpenSans-Semi", }
         };
         headerRight: <View />;
     };
@@ -316,7 +320,7 @@ class BookAppointment extends Component {
                         justifyContent: "center", alignContent: "center", alignItems: "center"
                     }}>
                         <Image
-                            source={require("../../../../assets/maggie/logoc.jpg")}
+                            source={require("../../../../assets/maggie/maggie-white-logo.png")}
                             style={{ width: width / 2, height: height / 10 }}
                         />
                         {/* <Image
@@ -325,7 +329,8 @@ class BookAppointment extends Component {
                     /> */}
                         <Text style={{
                             color: '#fff',
-                            fontFamily: 'Arial, Helvetica, sans-serif', textAlign: "center",
+                          fontFamily: "OpenSans-SemiBold",
+                            textAlign: "center",
                             fontSize: 25,
                             paddingTop: 25,
                             paddingBottom: 10,
@@ -342,61 +347,68 @@ class BookAppointment extends Component {
 
                             <View style={{
                                 opacity: 0.9,
-                                width: "85%", backgroundColor: "#3b3838",
+                                width: "85%", backgroundColor: "#f2f2f2",
 
                             }}>
                                 <ListItem
-                                // onPress={() => this.setState({ check1: !this.state.check1, })}
+                                    onPress={this.chkbox_check1.bind(this, "Bridal Hair")}
                                 >
                                     <CheckBox
-                                        onPress={this.chkbox_check1.bind(this, "Bridal Hair")}
-
-                                        // onPress={() => this.setState({ check1: !this.state.check1 })}
-
+                                    color={"#000"}
+                                    onPress={this.chkbox_check1.bind(this, "Bridal Hair")}
                                         value="Bridal Hair" checked={this.state.check1} />
                                     <Body>
-                                        <Text style={{ color: "#fff" }}>Bridal Hair</Text>
+                                        <Text style={{ color: "#000" }}>Bridal Hair</Text>
                                     </Body>
                                 </ListItem>
-                                <ListItem>
+                                <ListItem
+                                  onPress={this.chkbox_check2.bind(this, "Updo or Partial")}>
                                     <CheckBox
-                                        onPress={this.chkbox_check2.bind(this, "Updo or Partial")}
+                                     color={"#000"}
+                                       onPress={this.chkbox_check2.bind(this, "Updo or Partial")}
                                         value="Updo or Partial" checked={this.state.check2} />
                                     <Body>
-                                        <Text style={{ color: "#fff" }}>Updo or Partial</Text>
+                                        <Text style={{ color: "#000" }}>Updo or Partial</Text>
                                     </Body>
                                 </ListItem>
-                                <ListItem>
+                                <ListItem 
+                                  onPress={this.chkbox_check3.bind(this, "Down do")}>
                                     <CheckBox
+                                     color={"#000"}
                                         onPress={this.chkbox_check3.bind(this, "Down do")}
                                         value="Down do" checked={this.state.check3} />
                                     <Body>
-                                        <Text style={{ color: "#fff" }}>Down do</Text>
+                                        <Text style={{ color: "#000" }}>Down do</Text>
                                     </Body>
                                 </ListItem>
-                                <ListItem>
+                                <ListItem 
+                                 onPress={this.chkbox_check4.bind(this, "Extensions")}>
                                     <CheckBox
+                                     color={"#000"}
                                         onPress={this.chkbox_check4.bind(this, "Extensions")}
                                         value="Extensions" checked={this.state.check4} />
                                     <Body>
-                                        <Text style={{ color: "#fff" }}>Extensions</Text>
+                                        <Text style={{ color: "#000" }}>Extensions</Text>
                                     </Body>
                                 </ListItem>
-                                <ListItem>
+                                <ListItem 
+                                  onPress={this.chkbox_check5.bind(this, "Blowout")}>
                                     <CheckBox
-                                        onPress={this.chkbox_check5.bind(this, "Blowout")}
+                                     color={"#000"}
+                                       onPress={this.chkbox_check5.bind(this, "Blowout")}
                                         value="Blowout" checked={this.state.check5} />
                                     <Body>
-                                        <Text style={{ color: "#fff" }}>Blowout</Text>
+                                        <Text style={{ color: "#000" }}>Blowout</Text>
                                     </Body>
                                 </ListItem>
-                                <ListItem>
+                                <ListItem onPress={this.chkbox_check6.bind(this, "Keratin and Smoothing Treatments")}>
                                     <CheckBox
+                                     color={"#000"}
                                         onPress={this.chkbox_check6.bind(this, "Keratin and Smoothing Treatments")}
 
                                         value="Keratin and Smoothing Treatments" checked={this.state.check6} />
                                     <Body>
-                                        <Text style={{ color: "#fff" }}>Keratin and Smoothing Treatments</Text>
+                                        <Text style={{ color: "#000" }}>Keratin and Smoothing Treatments</Text>
                                     </Body>
                                 </ListItem>
 
@@ -409,7 +421,7 @@ class BookAppointment extends Component {
 
                         <Text style={{
                             color: '#fff',
-                            fontFamily: 'Arial, Helvetica, sans-serif', textAlign: "center",
+                          fontFamily: "OpenSans-SemiBold",textAlign: "center",
                             fontSize: 25,
                             paddingTop: 25,
                             paddingBottom: 10,
@@ -426,24 +438,26 @@ class BookAppointment extends Component {
 
                             <View style={{
                                 opacity: 0.9,
-                                width: "85%", backgroundColor: "#3b3838",
+                                width: "85%", backgroundColor: "#f2f2f2",
 
                             }}>
-                                <ListItem>
+                                <ListItem  onPress={this.chkbox_check7.bind(this, "Bridal Makeup")}>
                                     <CheckBox
+                                     color={"#000"}
                                         onPress={this.chkbox_check7.bind(this, "Bridal Makeup")}
                                         value="Bridal Makeup" checked={this.state.check7}
                                     />
                                     <Body>
-                                        <Text style={{ color: "#fff" }}>Bridal Makeup</Text>
+                                        <Text style={{ color: "#000" }}>Bridal Makeup</Text>
                                     </Body>
                                 </ListItem>
-                                <ListItem>
+                                <ListItem onPress={this.chkbox_check8.bind(this, "Event Makeup")}>
                                     <CheckBox
+                                     color={"#000"}
                                         onPress={this.chkbox_check8.bind(this, "Event Makeup")}
                                         value="Event Makeup" checked={this.state.check8} />
                                     <Body>
-                                        <Text style={{ color: "#fff" }}>Event Makeup</Text>
+                                        <Text style={{ color: "#000" }}>Event Makeup</Text>
                                     </Body>
                                 </ListItem>
 
@@ -454,7 +468,7 @@ class BookAppointment extends Component {
                         </View>
                         <Text style={{
                             color: '#fff',
-                            fontFamily: 'Arial, Helvetica, sans-serif', textAlign: "center",
+                          fontFamily: "OpenSans-SemiBold",textAlign: "center",
                             fontSize: 25,
                             paddingTop: 25,
                             paddingBottom: 10,
@@ -471,23 +485,26 @@ class BookAppointment extends Component {
 
                             <View style={{
                                 opacity: 0.9,
-                                width: "85%", backgroundColor: "#3b3838",
+                                width: "85%", backgroundColor: "#f2f2f2"
 
                             }}>
-                                <ListItem>
+                                <ListItem  onPress={this.chkbox_check9.bind(this, "Bridal Hair Trial")}>
                                     <CheckBox
+                                     color={"#000"}
                                         onPress={this.chkbox_check9.bind(this, "Bridal Hair Trial")}
                                         value="Bridal Hair Trial" checked={this.state.check9} />
                                     <Body>
-                                        <Text style={{ color: "#fff" }}>Bridal Hair Trial</Text>
+                                        <Text style={{ color: "#000" }}>Bridal Hair Trial</Text>
                                     </Body>
                                 </ListItem>
-                                <ListItem>
+                                <ListItem onPress={this.chkbox_check10.bind(this, "Bridal Makeup Trial")}>
                                     <CheckBox
-                                        onPress={this.chkbox_check10.bind(this, "Bridal Maleup Trial")}
-                                        value="Bridal Hair Trial" checked={this.state.check10} />
+                                     color={"#000"}
+                                        onPress={this.chkbox_check10.bind(this, "Bridal Makeup Trial")}
+                                        value="Bridal Hair Trial" checked={this.state.check10}
+                                        style={{color:"red"}} />
                                     <Body>
-                                        <Text style={{ color: "#fff" }}>Bridal Makeup Trial</Text>
+                                        <Text style={{ color: "#000" }}>Bridal Makeup Trial</Text>
                                     </Body>
                                 </ListItem>
 
@@ -499,7 +516,7 @@ class BookAppointment extends Component {
 
                         <Text style={{
                             color: '#fff',
-                            fontFamily: 'Arial, Helvetica, sans-serif', textAlign: "center",
+                          fontFamily: "OpenSans-SemiBold",textAlign: "center",
                             fontSize: 25,
                             paddingTop: 25,
                             paddingBottom: 10,
@@ -507,7 +524,7 @@ class BookAppointment extends Component {
                             textDecorationStyle: "dashed",
                         }}
                         >
-                            Your Details</Text>
+                            YOUR DETAIL</Text>
                         <View style={{
                             width: width / 1,
                             alignContent: "center", justifyContent: "center", alignItems: "center"
@@ -515,30 +532,35 @@ class BookAppointment extends Component {
 
                             <View style={{
                                 opacity: 0.9,
-                                width: "85%", backgroundColor: "#3b3838",
+                                width: "85%", backgroundColor: "#f2f2f2",
 
                             }}>
                                 <ListItem>
 
-                                    <Text style={{ color: "#fff" }}>YOUR NAME *</Text>
+                                    <Text style={{ color: "#000" }}>FULL NAME *</Text>
 
-                                    <Input style={{ color: "#fff" }} type="text" onChangeText={name => this.setState({ name })} />
+                                    <Input style={{ color: "#000" }} type="text" onChangeText={name => this.setState({ name })} />
                                 </ListItem>
                                 <ListItem>
 
-                                    <Text style={{ color: "#fff" }}>YOUR EMAIL *</Text>
+                                    <Text style={{ color: "#000" }}>EMAIL ADDRESS *</Text>
 
-                                    <Input style={{ color: "#fff" }} type="text" keyboardType={"email-address"} onChangeText={email => this.setState({ email })} />
+                                    <Input style={{ color: "#000" }} type="text" keyboardType={"email-address"} onChangeText={email => this.setState({ email })} />
                                 </ListItem>
                                 <ListItem>
 
-                                    <Text style={{ color: "#fff" }}>YOUR MOBILE NUMBER*</Text>
+                                    <Text style={{ color: "#000" }}>MOBILE NUMBER *</Text>
 
-                                    <Input style={{ color: "#fff" }} type="text" keyboardType={"numeric"} onChangeText={number => this.setState({ number })} />
+                                    <Input style={{ color: "#000" }} type="text" keyboardType={"numeric"} onChangeText={number => this.setState({ number })} />
                                 </ListItem>
-                                <ListItem>
+                                <ListItem style={{
+                                    paddingRight:20,
+                                    justifyContent:"flex-end",
+                                    alignContent:"flex-start",
+                                    alignSelf:"flex-start"
+                                    }}>
 
-                                    <Text style={{ color: "#fff" }}> </Text>
+                                    {/* <Text style={{ color: "#fff" }}> </Text> */}
 
                                     <DatePicker
                                         defaultDate={new Date(2019, 6, 1)}
@@ -549,27 +571,28 @@ class BookAppointment extends Component {
                                         modalTransparent={false}
                                         animationType={"fade"}
                                         androidMode={"default"}
-                                        placeHolderText="Select date : "
-                                        textStyle={{ color: "#fff", fontWeight: "bold", fontSize: 18 }}
-                                        placeHolderTextStyle={{ color: "#fff", fontSize: 15, fontWeight: "bold" }}
+                                        placeHolderText="SELECT DATE : "
+                                        textStyle={{ color: "#000", fontSize: 20, justifyContent:"flex-start",
+                                        fontFamily: " OpenSans-Regular",}}
+                                        placeHolderTextStyle={{ color: "#000", fontSize: 16, }}
                                         onDateChange={this.setDate}
                                         disabled={false}
                                     />
-                                    <Text style={{ color: "#fff", fontWeight: "bold" }}>
+                                    <Text style={{ color: "#000",fontSize: 17  }}>
                                         Date: {this.state.chosenDate.toString().substr(4, 12)}
                                     </Text>
                                 </ListItem>
                                 <ListItem>
 
-                                    <Text style={{ color: "#fff" }}>PREFERRED TIME : </Text>
+                                    <Text style={{ color: "#000" }}>PREFERRED TIME : </Text>
 
                                     <Picker
                                         mode="dropdown"
                                         iosIcon={<Icon name="md-arrow-down" />}
-                                        style={{ width: "25%", color: "#fff", }}
+                                        style={{ width: "25%", color: "#000", }}
                                         placeholder="Select Time"
-                                        placeholderStyle={{ color: "#fff", fontSize: 15, fontWeight: "bold" }}
-                                        placeholderIconColor="red"
+                                        placeholderStyle={{ color: "#000", fontSize: 15, fontWeight: "bold" }}
+                                        placeholderIconColor="#000"
                                         selectedValue={this.state.selected2}
                                         onValueChange={event => this.setState({ selected2: event })}
                                     >
@@ -598,11 +621,11 @@ class BookAppointment extends Component {
                                     </Picker>
                                 </ListItem>
 
-                                <Text style={{ color: "#fff", paddingLeft: 20 }}>NOTE :</Text>
+                                <Text style={{ color: "#000", paddingLeft: 20,paddingTop:20 }}>NOTE :</Text>
                                 <ListItem>
 
-                                    <Textarea rowSpan={5} bordered placeholder="write here"
-                                        style={{ color: "#fff", width: "95%" }}
+                                    <Textarea rowSpan={5} bordered placeholder=" Write Note"
+                                        style={{ color: "#000", width: "95%" }}
                                         onChangeText={note => this.setState({ note })}
                                     />
 
@@ -703,26 +726,26 @@ class BookAppointment extends Component {
 
 const styles = StyleSheet.flatten({});
 function mapStateToProps(state) {
-    console.log(state.authReducer.MaggieUser,'""""""""""MaggieUser"""""""""""""""')
-    console.log(state.authReducer.signuperror,"----------------signuperror-----------------------")
+    console.log(state.authReducer.MaggieUser, '""""""""""MaggieUser"""""""""""""""')
+    console.log(state.authReducer.signuperror, "----------------signuperror-----------------------")
     return {
-      MaggieUser: state.authReducer.MaggieUser,
-      signuperror:state.authReducer.signuperror
-      
+        MaggieUser: state.authReducer.MaggieUser,
+        signuperror: state.authReducer.signuperror
+
     };
-  }
-  function mapDispatchToProps(dispatch) {
+}
+function mapDispatchToProps(dispatch) {
     return {
-  
-    //     sendBooking: (payload, path) => {
-    //     dispatch(SendBookingDataBase(payload, path));
-    //   }
-      
-        
-     
+
+        //     sendBooking: (payload, path) => {
+        //     dispatch(SendBookingDataBase(payload, path));
+        //   }
+
+
+
     };
-  }
-  export default connect(
+}
+export default connect(
     mapStateToProps,
     mapDispatchToProps
-  )(BookAppointment);
+)(BookAppointment);

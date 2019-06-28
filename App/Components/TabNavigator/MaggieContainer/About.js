@@ -10,7 +10,7 @@ const { width, height, scale, fontScale } = Dimensions.get("window");
 export default class About extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
-            headerTitle: "ABOUT",
+            title: "ABOUT MAGGIE",
             // headerLeft: (
             //     <TouchableOpacity onPress={navigation.getParam("openDrawer")}>
             //         <Ionicons
@@ -37,9 +37,13 @@ export default class About extends Component {
                 alignSelf: "center",
                 textAlign: "center",
                 flex: 1,
-                marginLeft: -10
+                marginLeft: -30,
+                fontSize:width/23,
+
             },
-            headerStyle: { backgroundColor: "#fff" }
+            headerStyle: { backgroundColor: "#fff"
+            ,
+            fontFamily: "OpenSans-Semi" }
         };
         headerRight: <View />;
     };
@@ -121,89 +125,106 @@ export default class About extends Component {
             //     {/* </View> */}
             // </View>
             // </ScrollView>
-            <ImageBackground source={require("../../../../assets/maggie/Screenshot_8.jpg")}
-                blurRadius={Platform.OS == 'ios' ? 1 : 7}
-                style={{ width: '100%', height: '100%' }}>
-                <ScrollView>
-                    <View
+            // <ImageBackground source={require("../../../../assets/maggie/Screenshot_8.jpg")}
+            //     blurRadius={Platform.OS == 'ios' ? 1 : 7}
+            //     style={{ width: '100%', height: '100%' }}>
+            <ScrollView style={{ backgroundColor: "black" }}>
+                <View
+                    style={{
+
+                        // flexDirection: "column",
+                        padding: 20,
+                        justifyContent: "center",
+                        alignContent: "center",
+                        alignItems: "center",
+                        // textAlign: "auto",
+                        width: "100%",
+                        backgroundColor: "#000",
+
+                    }}>
+                    <Image
+
+                        source={require("../../../../assets/maggie/maggie.png")}
+                        // style={{ width: width / 2, height: height / 10 }}
                         style={{
+                            width: "50%", height: 250, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10,
+                            borderTopRightRadius: 30,
+                            borderBottomLeftRadius: 30,
+                            borderWidth: 4,
+                            // Set border color.
+                            borderColor: '#fff',
 
-                            flexDirection: "column", padding: 20,
-                            justifyContent: "center", alignContent: "center", alignItems: "center"
-                        }}>
-                        <Image
-                            source={require("../../../../assets/maggie/Screenshot_7.jpg")}
-                            // style={{ width: width / 2, height: height / 10 }}
-                            style={{ width: "50%", height: height / 4, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
-
-                        <Text style={{
-                            color: '#fff',
-                            // fontFamily: 'Chalkboard SE',
-                            textAlign: "center",
-                            fontSize: 35,
-                            paddingTop: 5,
-                            paddingBottom: 10,
-                            textDecorationLine: "underline",
-                            textDecorationStyle: "dashed",
-                            fontWeight: "bold"
-                        }}>
-
-                            About Us
-                            </Text>
-                        <View style={{
-                            width: width / 1,
-                            alignContent: "center", justifyContent: "center", alignItems: "center", borderRadius: 5
-
-                        }}>
-
-                            <View style={{
-                                opacity: 0.9,
-                                width: "85%", 
-                                backgroundColor: "#484646", 
-                                borderRadius: 10
-
-                            }}>
-                                <ListItem>
-                                    <Body>
-                                        <Text style={{
-                                            color: "#fff", textAlign: 'center', fontSize: 20, fontStyle:"normal",
-                                            fontFamily: " Courier"
-                                        }}>YOUR HAIR IS YOUR MOST EMINENT CROWN, INVEST IN IT TO STAY VIVACIOUS</Text>
-
-                                    </Body>
-                                </ListItem>
-                                <ListItem>
-                                    <Body>
-                                        <Text style={{ color: "#fff", textAlign: "center", fontSize: 20 ,fontStyle:"normal",
-                                            fontFamily: " Courier"}}>
-                                            Maggie Torbeih, an elegant and chic hairstylist who has an all-embracing experience in all aspects of hairstyling. I exhibits a
-                                            modern renaissance to the world of hairstyling with the trendiest and most classy vibes. Me and my team render the most
-                                            professionally pleasing to the eye service and transform the personality of clients entirely. Expert in delivering the most stylish
-                                            service customized absolutely to your taste and requirement. Illustrious for delivering an electric mix of classic and contemporary
-                                            styling, patient listener and values the opinions of my clients, extremely creative and a visionary artist, incorporates visual
-                                            inventiveness in my work. I am honest in my opinion and never misguides the clients and works in their best interest. my technical
-                                             skills and manual dexterity is quintessential of a hardcore professional, quite adaptable and always ready to absorb up to the
-                                             minute trends and techniques.
-                                        </Text>
-                                        <Text style={{ color: "#fff", textAlign: "center", fontSize: 20 ,fontStyle:"normal",
-                                            fontFamily: " Courier"}}>
-                                            Join me and my team to get into the whimsical world of hairstyling and get the most unique and chic hairdo. I am is a pro at
-                                            doing bridal, formal, semi-formal and casual hairstyling and transforms the texture and outlook of hair, I do special occasion’s
-                                            hair styles, Wedding, graduations party, and casual hairdos with perfection.
-                                        </Text>
-                                    </Body>
-                                </ListItem>
+                        }}
+                    />
 
 
-                            </View>
-                        </View>
+                    {/* <View style={{
 
-                    </View>
 
-                </ScrollView>
+                        textAlign: "justify",
+                        
+                        width: "100%",
 
-            </ImageBackground>
+                        backgroundColor: "#000",
+
+                    }}> */}
+
+
+
+                    {/* <Body> */}
+                    <Text style={{
+                        color: "#fff",
+                        textAlign: 'center',
+                        fontFamily: "OpenSans-SemiBold",
+                        fontSize: width / 20,
+                        fontWeight: "300",
+                        lineHeight: 30,
+                        width: "95%",
+                    }}>YOUR HAIR IS YOUR MOST EMINENT CROWN, INVEST IN IT TO STAY VIVACIOUS</Text>
+
+                    {/* </Body> */}
+
+
+
+                    <Text style={{
+                        color: "#fff",
+                        paddingTop: 10,
+                        width: "100%",
+                        // textAlign:"justify",
+                        textAlign: "center",
+                        justifyContent: "center",
+                        alignSelf: "auto",
+
+                        fontSize: 24,
+                        // textAlign: 'center',
+                        textAlignVertical: 'center',
+                        // textAlignVertical:"auto",
+                        lineHeight:35,
+                        // textTransform:"uppercase",
+
+                        //   justifyContent:"auto",
+
+                        // fontSize: width / 21,
+                        fontFamily: " OpenSans-Regular"
+                    }}>
+                        Maggie Torbeih, an elegant and chic hairstylist who has an all-embracing experience in all aspects of hairstyling. I exhibits a
+                        modern renaissance to the world of hairstyling with the trendiest and most classy vibes. Me and my team render the most
+                        professionally pleasing to the eye service and transform the personality of clients entirely. Expert in delivering the most stylish
+                        service customized absolutely to your taste and requirement. Illustrious for delivering an electric mix of classic and contemporary
+                        styling, patient listener and values the opinions of my clients, extremely creative and a visionary artist, incorporates visual
+                        inventiveness in my work. I am honest in my opinion and never misguides the clients and works in their best interest. My technical
+                         skills and manual dexterity is quintessential of a hardcore professional, quite adaptable and always ready to absorb up to the
+                         minute trends and techniques.Join me and my team to get into the whimsical world of hairstyling and get the most unique and chic hairdo.
+                         I am is a pro at doing bridal, formal, semi-formal and casual hairstyling and transforms the texture and outlook of hair, I do special
+                         occasion’s hair styles, Wedding, graduations party, and casual hairdos with perfection.
+                        </Text>
+                    {/* </View> */}
+
+                </View>
+
+            </ScrollView>
+
+            // </ImageBackground>
         );
     }
 }

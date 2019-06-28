@@ -55,9 +55,13 @@ export default class Chat extends Component {
                 alignSelf: "center",
                 textAlign: "center",
                 flex: 1,
-                marginLeft: -10
+                marginLeft: -10,
+                fontSize: width / 23,
             },
-            headerStyle: { backgroundColor: "#fff" }
+            headerStyle: {
+                backgroundColor: "#fff",
+                fontFamily: "OpenSans-Semi"
+            }
         };
         headerRight: <View />;
     };
@@ -145,21 +149,23 @@ export default class Chat extends Component {
             <View style={{
                 width: "90%",
                 alignSelf: item.from === this.props.currentUser ? "flex-start" : "flex-end",
-                backgroundColor: item.from === this.props.currentUser ? "#fff" : "#e2ffc7",
-                // borderRadius: 10,
-                borderBottomLeftRadius: -30,
-                borderTopRightRadius: -20,
-                marginBottom: 10,
+                backgroundColor: item.from === this.props.currentUser ? "#fff" : "#fff",
+               
+                borderBottomLeftRadius: 30,
                 borderBottomRightRadius: 10,
-                borderTopLeftRadius: 20
-                // borderTopRightRadius: -10,
+
+                marginBottom: 10,
+                borderTopRightRadius: -20,
+                borderTopLeftRadius: 30,
+                
+                
 
             }}
             >
                 <Text
                     style={{
-                        color: "black",
-                        padding: 10,
+                        color: "#000",
+                        padding: 12,
                         fontSize: 16,
                         // alignItems: "flex-start"
                     }}
@@ -170,7 +176,7 @@ export default class Chat extends Component {
                 <Text
                     style={{
                         color: "#000",
-                        padding: 3,
+                        padding: 5,
                         fontSize: 12,
                         alignItems: "center",
                         justifyContent: 'center',
@@ -182,7 +188,7 @@ export default class Chat extends Component {
                     <Text
                         style={{
                             color: "#000",
-                            padding: 3,
+                            padding: 5,
                             fontSize: 12,
                             alignItems: "center",
                             justifyContent: 'center',
@@ -204,7 +210,7 @@ export default class Chat extends Component {
     render() {
         return (
             <ImageBackground source={require("../../../../assets/maggie/Screenshot_8.jpg")}
-                blurRadius={Platform.OS == 'ios' ? 1 : 1}
+                blurRadius={Platform.OS == 'ios' ? 1 : 6}
                 style={{ width: '100%', height: '100%' }}>
 
                 <View
@@ -245,11 +251,11 @@ export default class Chat extends Component {
 
 
                                     }}
-                                    inlineImageRight='search_icon'
+                                    inlineImageLeft='search_icon'
                                     underlineColorAndroid="transparent"
                                     placeholder="Type message..."
                                     multiline={true}
-                                    numberOfLines={2}
+                                    numberOfLines={0}
                                     autoFocus={true}
                                 />
                                 <TouchableOpacity onPress={this.sendMessage}>
@@ -262,6 +268,7 @@ export default class Chat extends Component {
                                             fontSize: 16,
                                             fontWeight: 'bold',
                                             padding: 20,
+                                        
                                         }}
                                     > Send</Text>
                                 </TouchableOpacity>

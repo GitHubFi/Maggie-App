@@ -18,17 +18,17 @@ import {
 
 
 } from "react-native";
-import { Input, Button, Spinner, Form, Item, Picker, Label, Container, Content } from "native-base";
+import { Input, Button, Spinner, Form, Item, Picker, Label, Container, Content, Icon, } from "native-base";
 const { width, height, scale, fontScale } = Dimensions.get("window");
 import Entypo from "react-native-vector-icons/Entypo";
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import firebase from "react-native-firebase";
 import { connect } from "react-redux";
 import { signinFunc } from '../../Store/Actions/AuthAction'
 import validator from "validator";
-import TextInput from 'react-native-textinput-with-icons'
+// import TextInput from 'react-native-textinput-with-icons'
 import User from "./User";
 
 class SignIn extends Component {
@@ -101,6 +101,7 @@ class SignIn extends Component {
         <View
           style={{
             flex: 1,
+            width: width
             // padding: width / 20,
             // justifyContent: "space-around"
           }}
@@ -109,52 +110,86 @@ class SignIn extends Component {
           <View>
 
             <ImageBackground source={require("../../../assets/maggie/Screenshot_8.jpg")}
-              blurRadius={Platform.OS == 'ios' ? 1 : 1}
+              blurRadius={Platform.OS == 'ios' ? 1 : 2}
               style={{ width: '100%', height: '100%' }}>
               <View
                 style={{
                   flex: 1,
                   justifyContent: "center",
-                  alignItems: "center"
+                  alignItems: "center",
+                  width: width
                 }}>
                 <View style={{ width: width / 2, height: height / 10 }}>
                   <Image
-                    source={require("../../../assets/maggie/logoc.jpg")}
+                    source={require("../../../assets/maggie/maggie-white-logo.png")}
                     style={{ width: width / 2, height: height / 10, }}
                   />
                 </View>
 
                 <Text style={{
                   color: '#dcdedf',
-                  fontFamily: 'Arial, Helvetica, sans-serif', textAlign: "center",
-                  fontWeight: 'bold', fontSize: 15,
+                  fontFamily: " OpenSans-Regular",
+                  textAlign: "center",
+                  fontWeight: 'bold',
+                  fontSize: 15,
                   paddingTop: 25,
                   paddingBottom: 10
                 }}
                 >
                   Login Your Account</Text>
-                <View style={{ width: "80%", height: height / 9, backgroundColor: "#dcdedf", opacity: 0.9, borderRadius: 3, }}>
-                  {/* <MaterialCommunityIcons name="email" size={25} color="#24516e" /> */}
+
+                <View style={{ width: "80%", height: height / 8.3, backgroundColor: "#dcdedf", opacity: 0.9 }}>
+
                   <Input type="text" keyboardType={"email-address"} placeholder={"Email Address"} placeholder="Email Address"
                     style={{
-                      color: "black", fontWeight: "bold",
+                      color: "#000",
+                      fontWeight: "200",
+                      padding: 8,
                       borderBottomColor: 'white',
                       borderBottomWidth: 1,
-                      fontSize: 15
+                      fontSize: 15,
                     }}
-
-
                     onChangeText={email => this.setState({ email })}></Input>
-                  {/* <Entypo name={"lock"} size={25} color="#24516e" /> */}
-                  <Input type="password" placeholder="Password" secureTextEntry style={{ color: "black", fontSize: 15, fontWeight: "bold" }}
+                  {/* </Item>
+
+                     <Item >
+                  <Icon active name="lock" style={{paddingLeft:13}} /> */}
+                  <Input type="password" placeholder="Password"
+                    secureTextEntry
+                    style={{
+                      color: "#000",
+                      fontSize: 15,
+                      fontWeight: "200",
+                      padding: 8
+                    }}
                     onChangeText={password => this.setState({ password })}
                   ></Input>
+
 
                 </View>
 
 
+                <View style={{
+               
+                }}>
+                  <Text style={{
+                    color: "white",
+                    paddingBottom: 20,
+                    
+                    paddingTop: 18,
+                
 
-                <View style={{ height: height / 6, padding: 5 }}>
+                    paddingLeft: "40%",
+                    fontWeight: "bold",
+                    fontSize: 15,
+                    fontFamily: " OpenSans-Regular",
+                  }}>
+                    Forget Password?
+                  </Text>
+
+                </View>
+
+                <View style={{ height: height / 8, padding: 5, paddingTop: 10 }}>
 
 
                   {/* <TouchableOpacity onPress={this.signIn}> */}
@@ -165,48 +200,57 @@ class SignIn extends Component {
                     onPress={this.signIn}
                   >
 
-                    <Text style={{ color: "#000" }}> Login </Text>
+                    <Text style={{
+                      color: "#000",
+                      fontFamily: " OpenSans-Regular",
+                    }}>
+                      Login
+                   </Text>
                   </Button>
 
 
                 </View>
-                <View >
-                  <Text style={{
-                    color: "white", paddingBottom: 50, justifyContent: "flex-end", alignItems: "flex-end", alignContent: "flex-end", fontWeight: "bold", textDecorationLine: "underline", fontSize: 15
-                  }}>
-                    Forget Password?
-                  </Text>
-
-                </View>
 
 
 
 
-                <Text style={{ color: "#dcdedf", paddingRight: 5, color: "white" }}>
+
+                <Text style={{ color: "#dcdedf", paddingRight: 5, color: "white", fontFamily: " OpenSans-Regular", fontWeight: "200" , paddingBottom:80,
+              paddingTop:20}}>
                   New User?
               <Text
                     style={{
                       color: "#dcdedf",
                       // textDecorationLine: "underline",
                       color: "white",
-                      fontWeight: "bold",
-                      fontFamily: 'Arial, Helvetica, sans-serif',
+                      fontWeight: "300",
+                      fontFamily: " OpenSans-Regular",
                       fontSize: 15,
-                      // textDecorationColor: "#dcdedf"
+
                     }}
                     onPress={() => {
-                      // this.replaceScreen("SignUp");
+
                       this.props.navigation.navigate('SignUp')
                     }}
 
                   >
                     {"  "} Register Now
               </Text>
+
                 </Text>
+                <Text style={{ color: "#dcdedf", color: "white", fontFamily: " OpenSans-Regular", fontWeight: "200", textAlign: "center",}}>
+                  Copyright © 2018, Maggie
+              </Text>
+                
 
+                 
 
-
+                
               </View>
+
+                
+              
+              
 
 
             </ImageBackground>

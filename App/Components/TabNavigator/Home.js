@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TouchableOpacity, Dimensions, Image , AsyncStorage ,Alert} from 'react-native';
+import { StyleSheet, View, TouchableOpacity, Dimensions, Image, AsyncStorage, Alert } from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
 const { width, height, scale, fontScale } = Dimensions.get("window");
 import { Container, Header, Content, Card, CardItem, Text, Body, Icon } from 'native-base';
@@ -8,23 +8,33 @@ import firebase from 'react-native-firebase'
 export default class Home extends Component {
     static navigationOptions = ({ navigation }) => {
         return {
-            title: "Maggie App"
+            headerTitle: (
+                <Image
+                    resizeMode="contain"
+                    source={require("../../../assets/maggie/headerLogo.png")}
+                    style={{
+                        flex: 1, width: 150, height: 60, resizeMode: "contain",
+                    }}
+                />
+
+            ),
+            headerStyle: { height: 60 }
 
             ,
             headerLeft: (
-                <TouchableOpacity 
-                onPress={navigation.getParam("LogOut")}
-                 >
+                <TouchableOpacity
+                    onPress={navigation.getParam("LogOut")}
+                >
                     <Ionicons
                         name="md-log-out"
                         size={width / 14}
                         color="#000"
                         style={{ marginLeft: 10 }}
-                      
+
                     />
                     {/* <Icon name="ios-arrow-left" /> */}
                 </TouchableOpacity>
-                
+
             ), headerRight: (
                 <TouchableOpacity onPress={navigation.getParam("openDrawer")}>
                     <Ionicons
@@ -36,18 +46,20 @@ export default class Home extends Component {
                     {/* <Icon name="ios-arrow-left" /> */}
                 </TouchableOpacity>
             ),
+
             headerTitleStyle: {
-                color: "#000",
+                // color: "#000",
                 alignSelf: "center",
                 textAlign: "center",
                 flex: 1,
-                marginLeft: -10,
+                justifyContent: 'center',
+                height: 100,
+
+                // marginLeft: -10,
 
 
             },
-            headerStyle: {
-                backgroundColor: "#fff",
-            }
+            headerStyle: { height: 75 }
         };
         headerRight: <View />;
     };
@@ -70,10 +82,10 @@ export default class Home extends Component {
 
     componentDidMount() {
         this.props.navigation.setParams({
-          
+
             LogOut: this.signOutUser
         });
-      }
+    }
 
 
     signOutUser = () => {
@@ -81,345 +93,358 @@ export default class Home extends Component {
             'Logout',
             'you are going to logout',
             [
-             ,
-              {
-                text: 'Cancel',
-                onPress: () => { this.props.navigation.navigate('Homege')
-                console.log('Cancel Pressed')},
-                style: 'cancel',
-              },
-              {text: 'Confirm', onPress: () =>{ firebase.auth().signOut().then(async () => {
-                console.log('SIgn out successfull');
-                
-          
-                await AsyncStorage.removeItem('User', (err => {
-                  console.log(err)
-                }))
-                this.props.navigation.navigate('signIn');
-              }).catch((err) => {
-                console.log(err)
-              })},
-            }
-            ],
-            {cancelable: false},
-          );
+                ,
+                {
+                    text: 'Cancel',
+                    onPress: () => {
+                        this.props.navigation.navigate('Homege')
+                        console.log('Cancel Pressed')
+                    },
+                    style: 'cancel',
+                },
+                {
+                    text: 'Confirm', onPress: () => {
+                        firebase.auth().signOut().then(async () => {
+                            console.log('SIgn out successfull');
 
-       
-      }
-    
+
+                            await AsyncStorage.removeItem('User', (err => {
+                                console.log(err)
+                            }))
+                            this.props.navigation.navigate('signIn');
+                        }).catch((err) => {
+                            console.log(err)
+                        })
+                    },
+                }
+            ],
+            { cancelable: false },
+        );
+
+
+    }
+
 
     render() {
         return (
             <View style={{ flex: 1, backgroundColor: "black" }}>
                 <View style={{
-                    flex: 0.9,
+                    flex: 1,
                     justifyContent: "space-around",
                     // backgroundColor: "#eeeeee"
+                     paddingBottom:30
+                    
+                    // height: height
+
                 }}>
-                    <View style={{ flex: 1 / 2, flexDirection: "row", padding: 20, backgroundColor: "black" }}>
+                    <View style={{ flex: 1 / 2, flexDirection: "row",
+                    padding:20,
+                  
+                    backgroundColor: "black" }}>
                         <Container style={{
-                            backgroundColor: "black", borderRadius: 10,
+                            backgroundColor: "black", borderRadius: 10, padding: 10
 
 
                         }}>
 
-                            <Content style={{ paddingRight: 20 }}>
-                                <Card>
-                                    <CardItem>
-                                        <Body>
-                                            <TouchableOpacity
-                                                style={{
-                                                    width: width / 2,
-                                                    // justifyContent: "center",
-                                                    alignItems: "center",
-                                                    // backgroundColor: "red",
-                                                    justifyContent: "center",
-                                                    alignContent: "center",
-                                                    alignSelf: "center"
+                            {/* <Content style={{ paddingRight: 20, backgroundColor: "pink" }}> */}
+                            {/* <Card style={{backgroundColor: "black" }} >  */}
+                            <CardItem style={{ borderRadius: 15, paddingRight: 20, width: "90%" }}>
+                                <Body>
+                                    <TouchableOpacity
+                                        style={{
+                                            width: width / 2,
+                                            // justifyContent: "center",
+                                            alignItems: "center",
+                                            // backgroundColor: "red",
+                                            justifyContent: "center",
+                                            alignContent: "center",
+                                            alignSelf: "center"
 
-                                                }}
-                                                onPress={() => {
-                                                    this.props.navigation.navigate("about");
-                                                }}
-                                            >
-                                                <Image
-                                                    source={require("../../../assets/maggie/female-person-icon-6.jpg")}
-                                                    style={{ width: 70, height: 70 }}
-                                                />
+                                        }}
+                                        onPress={() => {
+                                            this.props.navigation.navigate("about");
+                                        }}
+                                    >
+                                        <Image
+                                            source={require("../../../assets/maggie/female-person-icon1-6.png")}
+                                            style={{ width: 70, height: 70, justifyContent: "center" }}
+                                        />
 
-                                                <Text style={{ color: "black", fontWeight: "bold", }}>
-                                                    About
+                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30, }}>
+                                            ABOUT
                   </Text>
-                                            </TouchableOpacity>
-                                        </Body>
+                                    </TouchableOpacity>
+                                </Body>
 
-                                    </CardItem>
-                                </Card>
-                            </Content>
+                            </CardItem>
+                            {/* </Card> */}
+                            {/* </Content> */}
                         </Container >
 
-                        <Container style={{ backgroundColor: "black" }}>
+                        <Container style={{ backgroundColor: "black", padding: 10 }}>
 
-                            <Content style={{ paddingLeft: 20 }}>
-                                <Card>
-                                    <CardItem>
-                                        <Body>
-                                            <TouchableOpacity
-                                                style={{
-                                                    width: width / 2,
-                                                    // justifyContent: "center",
-                                                    alignItems: "center",
-                                                    // backgroundColor: "red",
-                                                    justifyContent: "center",
-                                                    alignContent: "center",
-                                                    alignSelf: "center"
+                            {/* <Content style={{ paddingLeft: 20 }}> */}
+                            {/* <Card> */}
+                            <CardItem style={{ borderRadius: 15, paddingLeft: 20, width: "90%" }}>
+                                <Body>
+                                    <TouchableOpacity
+                                        style={{
+                                            width: width / 2,
+                                            // justifyContent: "center",
+                                            alignItems: "center",
+                                            // backgroundColor: "red",
+                                            justifyContent: "center",
+                                            alignContent: "center",
+                                            alignSelf: "center"
 
-                                                }}
-                                                onPress={() => {
-                                                    this.props.navigation.navigate("services");
-                                                }}
-                                            >
-                                                <Image
-                                                    source={require("../../../assets/maggie/service.jpg")}
-                                                    style={{ width: 70, height: 70 }}
-                                                />
+                                        }}
+                                        onPress={() => {
+                                            this.props.navigation.navigate("services");
+                                        }}
+                                    >
+                                        <Image
+                                            source={require("../../../assets/maggie/Service.png")}
+                                            style={{ width: 70, height: 70, justifyContent: "center", paddingTop:5 }}
+                                        />
 
-                                                <Text style={{ color: "black", fontWeight: "bold" }}>
-                                                    Services
+                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30, }}>
+                                            SERVICES
                   </Text>
-                                            </TouchableOpacity>
-                                        </Body>
+                                    </TouchableOpacity>
+                                </Body>
 
-                                    </CardItem>
-                                </Card>
-                            </Content>
+                            </CardItem>
+                            {/* </Card> */}
+                            {/* </Content> */}
+                        </Container>
+
+                    </View>
+                    <View style={{ flex: 1 / 2, flexDirection: "row", padding: 20, }}>
+                        <Container style={{ backgroundColor: "black", padding: 10 }}>
+
+                            {/* <Content style={{ paddingRight: 20 }}> */}
+                            {/* <Card> */}
+                            <CardItem style={{ borderRadius: 15, paddingRight: 20, width: "90%" }}>
+                                <Body>
+                                    <TouchableOpacity
+                                        style={{
+                                            width: width / 2,
+                                            // justifyContent: "center",
+                                            alignItems: "center",
+                                            // backgroundColor: "red",
+                                            justifyContent: "center",
+                                            alignContent: "center",
+                                            alignSelf: "center"
+
+                                        }}
+                                        onPress={() => {
+                                            this.props.navigation.navigate("gallery");
+                                        }}
+                                    >
+                                        <Image
+                                            source={require("../../../assets/maggie/Gallery.png")}
+                                            style={{ width: 70, height: 70, justifyContent: "center" }}
+                                        />
+
+                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30,  }}>
+                                            GALLERY
+</Text>
+                                    </TouchableOpacity>
+                                </Body>
+
+                            </CardItem>
+                            {/* </Card> */}
+                            {/* </Content> */}
+                        </Container>
+                        <Container style={{ backgroundColor: "black", padding: 10 }}>
+
+                            {/* <Content style={{ paddingLeft: 20 }}> */}
+                            {/* <Card> */}
+                            <CardItem style={{ borderRadius: 15, paddingLeft: 20, width: "90%" }}>
+                                <Body>
+                                    <TouchableOpacity
+                                        style={{
+                                            width: width / 2,
+                                            // justifyContent: "center",
+                                            alignItems: "center",
+                                            // backgroundColor: "red",
+                                            justifyContent: "center",
+                                            alignContent: "center",
+                                            alignSelf: "center"
+
+                                        }}
+                                        onPress={() => {
+                                            this.props.navigation.navigate("video");
+                                        }}
+                                    >
+                                        <Image
+                                            source={require("../../../assets/maggie/Video.png")}
+                                            style={{ width: 70, height: 70}}
+                                        />
+
+                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30,  }}>
+                                            VIDEOS
+</Text>
+                                    </TouchableOpacity>
+                                </Body>
+
+                            </CardItem>
+                            {/* </Card> */}
+                            {/* </Content> */}
                         </Container>
 
                     </View>
                     <View style={{ flex: 1 / 2, flexDirection: "row", padding: 20 }}>
-                        <Container style={{ backgroundColor: "black" }}>
+                        <Container style={{ backgroundColor: "black", padding: 10 }}>
 
-                            <Content style={{ paddingRight: 20 }}>
-                                <Card>
-                                    <CardItem>
-                                        <Body>
-                                            <TouchableOpacity
-                                                style={{
-                                                    width: width / 2,
-                                                    // justifyContent: "center",
-                                                    alignItems: "center",
-                                                    // backgroundColor: "red",
-                                                    justifyContent: "center",
-                                                    alignContent: "center",
-                                                    alignSelf: "center"
+                            {/* <Content style={{ paddingRight: 20 }}> */}
+                            {/* <Card> */}
+                            <CardItem style={{ borderRadius: 15, paddingRight: 20, width: "90%" }}>
+                                <Body>
+                                    <TouchableOpacity
+                                        style={{
+                                            width: width / 2,
 
-                                                }}
-                                                onPress={() => {
-                                                    this.props.navigation.navigate("gallery");
-                                                }}
-                                            >
-                                                <Image
-                                                    source={require("../../../assets/maggie/image.jpg")}
-                                                    style={{ width: 70, height: 70 }}
-                                                />
+                                            // justifyContent: "center",
+                                            alignItems: "center",
+                                            // backgroundColor: "red",
+                                            // backgroundColor: "red",
+                                            justifyContent: "center",
+                                            alignContent: "center",
+                                            alignSelf: "center"
 
-                                                <Text style={{ color: "black", fontWeight: "bold" }}>
-                                                    Gallery
+                                        }}
+                                        onPress={() => {
+                                            this.props.navigation.navigate("price");
+                                        }}
+                                    >
+                                        <Image
+                                            source={require("../../../assets/maggie/Price.png")}
+                                            style={{ width: 70, height: 70, justifyContent: "center" }}
+                                        />
+
+                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30,  }}>
+                                            PRICE LIST
 </Text>
-                                            </TouchableOpacity>
-                                        </Body>
+                                    </TouchableOpacity>
+                                </Body>
 
-                                    </CardItem>
-                                </Card>
-                            </Content>
+                            </CardItem>
+                            {/* </Card> */}
+                            {/* </Content> */}
                         </Container>
-                        <Container style={{ backgroundColor: "black" }}>
+                        <Container style={{ backgroundColor: "black", padding: 10 }}>
 
-                            <Content style={{ paddingLeft: 20 }}>
-                                <Card>
-                                    <CardItem>
-                                        <Body>
-                                            <TouchableOpacity
-                                                style={{
-                                                    width: width / 2,
-                                                    // justifyContent: "center",
-                                                    alignItems: "center",
-                                                    // backgroundColor: "red",
-                                                    justifyContent: "center",
-                                                    alignContent: "center",
-                                                    alignSelf: "center"
+                            {/* <Content style={{ paddingLeft: 20 }} > */}
+                            {/* <Card> */}
+                            <CardItem style={{ borderRadius: 15, paddingLeft: 20, width: "90%" }}>
+                                <Body>
+                                    <TouchableOpacity
+                                        style={{
+                                            width: width / 2,
+                                            // justifyContent: "center",
+                                            alignItems: "center",
+                                            // backgroundColor: "red",
+                                            // backgroundColor: "red",
+                                            justifyContent: "center",
+                                            alignContent: "center",
+                                            alignSelf: "center"
 
-                                                }}
-                                                onPress={() => {
-                                                    this.props.navigation.navigate("video");
-                                                }}
-                                            >
-                                                <Image
-                                                    source={require("../../../assets/maggie/video.png")}
-                                                    style={{ width: 70, height: 70 }}
-                                                />
+                                        }}
+                                        onPress={() => {
+                                            this.props.navigation.navigate("classes");
+                                        }}
+                                    >
+                                        <Image
+                                            source={require("../../../assets/maggie/teacher.png")}
+                                            style={{ width: 70, height: 70, justifyContent: "center" }}
+                                        />
 
-                                                <Text style={{ color: "black", fontWeight: "bold" }}>
-                                                    Videos
+                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30, }}>
+                                            CLASSES
 </Text>
-                                            </TouchableOpacity>
-                                        </Body>
+                                    </TouchableOpacity>
+                                </Body>
 
-                                    </CardItem>
-                                </Card>
-                            </Content>
-                        </Container>
-
-                    </View>
-                    <View style={{ flex: 1 / 2, flexDirection: "row", padding: 20 }}>
-                        <Container style={{ backgroundColor: "black" }}>
-
-                            <Content style={{ paddingRight: 20 }}>
-                                <Card>
-                                    <CardItem>
-                                        <Body>
-                                            <TouchableOpacity
-                                                style={{
-                                                    width: width / 2,
-                                                    // justifyContent: "center",
-                                                    alignItems: "center",
-                                                    // backgroundColor: "red",
-                                                    // backgroundColor: "red",
-                                                    justifyContent: "center",
-                                                    alignContent: "center",
-                                                    alignSelf: "center"
-
-                                                }}
-                                                onPress={() => {
-                                                    this.props.navigation.navigate("price");
-                                                }}
-                                            >
-                                                <Image
-                                                    source={require("../../../assets/maggie/pricelist.png")}
-                                                    style={{ width: 70, height: 70 }}
-                                                />
-
-                                                <Text style={{ color: "black", fontWeight: "bold" }}>
-                                                    Price List
-</Text>
-                                            </TouchableOpacity>
-                                        </Body>
-
-                                    </CardItem>
-                                </Card>
-                            </Content>
-                        </Container>
-                        <Container style={{ backgroundColor: "black" }}>
-
-                            <Content style={{ paddingLeft: 20 }} >
-                                <Card>
-                                    <CardItem>
-                                        <Body>
-                                            <TouchableOpacity
-                                                style={{
-                                                    width: width / 2,
-                                                    // justifyContent: "center",
-                                                    alignItems: "center",
-                                                    // backgroundColor: "red",
-                                                    // backgroundColor: "red",
-                                                    justifyContent: "center",
-                                                    alignContent: "center",
-                                                    alignSelf: "center"
-
-                                                }}
-                                                onPress={() => {
-                                                    this.props.navigation.navigate("classes");
-                                                }}
-                                            >
-                                                <Image
-                                                    source={require("../../../assets/maggie/teacher.png")}
-                                                    style={{ width: 70, height: 70 }}
-                                                />
-
-                                                <Text style={{ color: "black", fontWeight: "bold" }}>
-                                                    Classes
-</Text>
-                                            </TouchableOpacity>
-                                        </Body>
-
-                                    </CardItem>
-                                </Card>
-                            </Content>
+                            </CardItem>
+                            {/* </Card> */}
+                            {/* </Content> */}
                         </Container>
 
                     </View>
                     <View style={{ flex: 1 / 2, flexDirection: "row", padding: 20 }}>
-                        <Container style={{ backgroundColor: "black" }}>
+                        <Container style={{ backgroundColor: "black", padding: 10 }}>
 
-                            <Content style={{ paddingRight: 20 }}>
-                                <Card>
-                                    <CardItem>
-                                        <Body>
-                                            <TouchableOpacity
-                                                style={{
-                                                    width: width / 2,
-                                                    // justifyContent: "center",
-                                                    alignItems: "center",
-                                                    // backgroundColor: "red",
-                                                    justifyContent: "center",
-                                                    alignContent: "center",
-                                                    alignSelf: "center"
+                            {/* <Content style={{ paddingRight: 20 }}> */}
+                            {/* <Card> */}
+                            <CardItem style={{ borderRadius: 15, paddingRight: 20, width: "90%" }}>
+                                <Body>
+                                    <TouchableOpacity
+                                        style={{
+                                            width: width / 2,
+                                            // justifyContent: "center",
+                                            alignItems: "center",
+                                            // backgroundColor: "red",
+                                            justifyContent: "center",
+                                            alignContent: "center",
+                                            alignSelf: "center"
 
-                                                }}
-                                                onPress={() => {
-                                                    this.props.navigation.navigate("bookappointment");
-                                                }}
-                                            >
-                                                <Image
-                                                    source={require("../../../assets/maggie/Screenshot_14.jpg")}
-                                                    style={{ width: 70, height: 70 }}
-                                                />
+                                        }}
+                                        onPress={() => {
+                                            this.props.navigation.navigate("bookappointment");
+                                        }}
+                                    >
+                                        <Image
+                                            source={require("../../../assets/maggie/Appointment.png")}
+                                            style={{ width: 70, height: 70 }}
+                                        />
 
-                                                <Text style={{ color: "black", fontWeight: "bold", fontSize: 12 }}>
-                                                    Book Appointment
+                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30, }}>
+                                            BOOK APPOINTMENT
 </Text>
-                                            </TouchableOpacity>
-                                        </Body>
+                                    </TouchableOpacity>
+                                </Body>
 
-                                    </CardItem>
-                                </Card>
-                            </Content>
+                            </CardItem>
+                            {/* </Card> */}
+                            {/* </Content> */}
                         </Container>
-                        <Container style={{ backgroundColor: "black" }}>
+                        <Container style={{ backgroundColor: "black", padding: 10 }}>
 
-                            <Content style={{ paddingLeft: 20 }}>
-                                <Card>
-                                    <CardItem>
-                                        <Body>
-                                            <TouchableOpacity
-                                                style={{
-                                                    width: width / 2,
-                                                    // justifyContent: "center",
-                                                    alignItems: "center",
-                                                    // backgroundColor: "red",
-                                                    justifyContent: "center",
-                                                    alignContent: "center",
-                                                    alignSelf: "center"
+                            {/* <Content style={{ paddingLeft: 20 }}> */}
+                            {/* <Card> */}
+                            <CardItem style={{ borderRadius: 15, paddingLeft: 20, width: "90%" }}>
+                                <Body>
+                                    <TouchableOpacity
+                                        style={{
+                                            width: width / 2,
+                                            // justifyContent: "center",
+                                            alignItems: "center",
+                                            // backgroundColor: "red",
+                                            justifyContent: "center",
+                                            alignContent: "center",
+                                            alignSelf: "center"
 
-                                                }}
-                                                onPress={() => {
-                                                    this.props.navigation.navigate("chat");
-                                                }}
-                                            >
-                                                <Image
-                                                    source={require("../../../assets/maggie/Screenshot_15.jpg")}
-                                                    style={{ width: 70, height: 70 }}
-                                                />
+                                        }}
+                                        onPress={() => {
+                                            this.props.navigation.navigate("chat");
+                                        }}
+                                    >
+                                        <Image
+                                            source={require("../../../assets/maggie/Chat.png")}
+                                            style={{ width: 70, height: 70, justifyContent: "center" }}
+                                        />
 
-                                                <Text style={{ color: "black", fontWeight: "bold" }}>
-                                                    Chat
+                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30,  }}>
+                                            CHAT
                   </Text>
-                                            </TouchableOpacity>
-                                        </Body>
+                                    </TouchableOpacity>
+                                </Body>
 
-                                    </CardItem>
-                                </Card>
-                            </Content>
+                            </CardItem>
+                            {/* </Card> */}
+                            {/* </Content> */}
                         </Container>
 
                     </View>
