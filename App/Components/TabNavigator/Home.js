@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, TouchableOpacity, Dimensions, Image, AsyncStorage, Alert } from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
+import EvilIcons from "react-native-vector-icons/EvilIcons";
+
 const { width, height, scale, fontScale } = Dimensions.get("window");
 import { Container, Header, Content, Card, CardItem, Text, Body, Icon } from 'native-base';
 import firebase from 'react-native-firebase'
@@ -25,18 +27,18 @@ export default class Home extends Component {
                 <TouchableOpacity
                     onPress={navigation.getParam("LogOut")}
                 >
-                    <Ionicons
-                        name="md-log-out"
-                        size={width / 14}
+                    <EvilIcons
+                        name="arrow-left"
+                        size={width / 10}
                         color="#000"
-                        style={{ marginLeft: 10 }}
+                        style={{ marginLeft: 8 }}
 
                     />
                     {/* <Icon name="ios-arrow-left" /> */}
                 </TouchableOpacity>
 
             ), headerRight: (
-                <TouchableOpacity onPress={navigation.getParam("openDrawer")}>
+                <TouchableOpacity onPress={navigation.getParam('Noti')}>
                     <Ionicons
                         name="md-notifications-outline"
                         size={width / 14}
@@ -83,8 +85,14 @@ export default class Home extends Component {
     componentDidMount() {
         this.props.navigation.setParams({
 
-            LogOut: this.signOutUser
+            LogOut: this.signOutUser,
+            Noti: this.GoToNotification
         });
+    }
+
+    GoToNotification = () => {
+        this.props.navigation.navigate('Notification')
+
     }
 
 
@@ -132,15 +140,17 @@ export default class Home extends Component {
                     flex: 1,
                     justifyContent: "space-around",
                     // backgroundColor: "#eeeeee"
-                     paddingBottom:30
-                    
+                    paddingBottom: 30
+
                     // height: height
 
                 }}>
-                    <View style={{ flex: 1 / 2, flexDirection: "row",
-                    padding:20,
-                  
-                    backgroundColor: "black" }}>
+                    <View style={{
+                        flex: 1 / 2, flexDirection: "row",
+                        padding: 20,
+
+                        backgroundColor: "black"
+                    }}>
                         <Container style={{
                             backgroundColor: "black", borderRadius: 10, padding: 10
 
@@ -205,7 +215,7 @@ export default class Home extends Component {
                                     >
                                         <Image
                                             source={require("../../../assets/maggie/Service.png")}
-                                            style={{ width: 70, height: 70, justifyContent: "center", paddingTop:5 }}
+                                            style={{ width: 70, height: 70, justifyContent: "center", paddingTop: 5 }}
                                         />
 
                                         <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30, }}>
@@ -247,7 +257,7 @@ export default class Home extends Component {
                                             style={{ width: 70, height: 70, justifyContent: "center" }}
                                         />
 
-                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30,  }}>
+                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30, }}>
                                             GALLERY
 </Text>
                                     </TouchableOpacity>
@@ -280,10 +290,10 @@ export default class Home extends Component {
                                     >
                                         <Image
                                             source={require("../../../assets/maggie/Video.png")}
-                                            style={{ width: 70, height: 70}}
+                                            style={{ width: 70, height: 70 }}
                                         />
 
-                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30,  }}>
+                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30, }}>
                                             VIDEOS
 </Text>
                                     </TouchableOpacity>
@@ -324,7 +334,7 @@ export default class Home extends Component {
                                             style={{ width: 70, height: 70, justifyContent: "center" }}
                                         />
 
-                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30,  }}>
+                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30, }}>
                                             PRICE LIST
 </Text>
                                     </TouchableOpacity>
@@ -436,7 +446,7 @@ export default class Home extends Component {
                                             style={{ width: 70, height: 70, justifyContent: "center" }}
                                         />
 
-                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30,  }}>
+                                        <Text style={{ color: "black", fontWeight: "bold", fontSize: width / 30, }}>
                                             CHAT
                   </Text>
                                     </TouchableOpacity>

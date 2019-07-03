@@ -14,6 +14,7 @@ import com.facebook.soloader.SoLoader;
 import io.invertase.firebase.auth.RNFirebaseAuthPackage; // <-- Add this line
 import io.invertase.firebase.database.RNFirebaseDatabasePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage; 
+import io.invertase.firebase.storage.RNFirebaseStoragePackage;
 
 
 
@@ -40,7 +41,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNFirebaseAuthPackage(),
             new RNFirebaseDatabasePackage(),
              new RNFirebaseMessagingPackage(),
-             new ReactVideoPackage()
+             new ReactVideoPackage(),
+             new RNFirebaseStoragePackage() // <-- Add this line
       );
     }
 

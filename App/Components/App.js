@@ -35,6 +35,9 @@ import Price from './TabNavigator/MaggieContainer/Price'
 import Classes from './TabNavigator/MaggieContainer/Classes'
 import BookAppointment from './TabNavigator/MaggieContainer/BookAppointment'
 import Chat from './TabNavigator/MaggieContainer/Chat'
+import Privacy from './TabNavigator/MaggieContainer/Privacy'
+import ForgetPassword from './TabNavigator/MaggieContainer/ForgetPassword'
+import Notification from './TabNavigator/MaggieContainer/Notification'
 
 
 const AuthStackNavigator = createStackNavigator(
@@ -54,6 +57,9 @@ const AuthStackNavigator = createStackNavigator(
     bookappointment:BookAppointment,
     chat:Chat,
     splash: Splash,
+    privacy:Privacy,
+    forgetpassword:ForgetPassword,
+    Notification:Notification
   },
   {
     initialRouteName: "splash"

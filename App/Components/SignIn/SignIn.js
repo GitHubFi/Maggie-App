@@ -37,7 +37,8 @@ class SignIn extends Component {
     this.state = {
       email: "",
       password: "",
-      loading: false
+      loading: false,
+      NewYear: ""
     };
   }
   static navigationOptions = {
@@ -51,6 +52,14 @@ class SignIn extends Component {
       routeName: `${route}`
     });
   };
+
+
+  componentDidMount() {
+    let year = new Date().getFullYear(); //Current Year
+    this.setState({
+      NewYear: year
+    })
+  }
   signIn = () => {
 
     // let { country, phonesNumber, code } = this.state;
@@ -74,44 +83,43 @@ class SignIn extends Component {
         { cancelable: false },
       )
 
-    } else if (this.props.isError === false) {
-      Alert.alert('you are Successfully Login')
-
     }
     this.props.signInAction(this.state, this.props.navigation);
-
-
-
-
-
   }
 
 
   render() {
     return (
-      <ScrollView
-        contentContainerStyle={{
-          height,
-          width,
-          // backgroundColor: "#272727"
-        }}
-        keyboardDismissMode="interactive"
-        keyboardShouldPersistTaps="handled"
-      >
+      <View style={{
+        height: height
+      }}>
+
+
+        {/* <ScrollView
+          contentContainerStyle={{
+            height,
+            width,
+            // backgroundColor: "#272727"
+          }}
+          keyboardDismissMode="interactive"
+          keyboardShouldPersistTaps="handled"
+        > */}
         <View
           style={{
             flex: 1,
-            width: width
+            width: width,
+
+
             // padding: width / 20,
             // justifyContent: "space-around"
           }}
         >
 
-          <View>
+          <View style={{ height: height }}>
 
             <ImageBackground source={require("../../../assets/maggie/Screenshot_8.jpg")}
               blurRadius={Platform.OS == 'ios' ? 1 : 2}
-              style={{ width: '100%', height: '100%' }}>
+              style={{ width: '100%', height: height }}>
               <View
                 style={{
                   flex: 1,
@@ -138,13 +146,14 @@ class SignIn extends Component {
                 >
                   Login Your Account</Text>
 
-                <View style={{ width: "80%", height: height / 8.3, backgroundColor: "#dcdedf", opacity: 0.9 }}>
+                <View style={{ width: "80%", height: height / 7.4, backgroundColor: "#dcdedf", opacity: 0.9, padding: 10 }}>
 
                   <Input type="text" keyboardType={"email-address"} placeholder={"Email Address"} placeholder="Email Address"
                     style={{
                       color: "#000",
                       fontWeight: "200",
                       padding: 8,
+
                       borderBottomColor: 'white',
                       borderBottomWidth: 1,
                       fontSize: 15,
@@ -170,62 +179,78 @@ class SignIn extends Component {
 
 
                 <View style={{
-               
+
                 }}>
                   <Text style={{
                     color: "white",
                     paddingBottom: 20,
-                    
+
                     paddingTop: 18,
-                
+
 
                     paddingLeft: "40%",
                     fontWeight: "bold",
                     fontSize: 15,
                     fontFamily: " OpenSans-Regular",
-                  }}>
+                  }}
+                    onPress={() => { this.props.navigation.navigate('forgetpassword') }}>
                     Forget Password?
                   </Text>
 
                 </View>
+                {
+                  (this.props.isProgress === true) ?
+                    <View style={[styles.container, styles.horizontal]}>
 
-                <View style={{ height: height / 8, padding: 5, paddingTop: 10 }}>
+                      <ActivityIndicator size="large" color="#ffffff" />
+
+                    </View>
+                    : null
+
+                }
 
 
-                  {/* <TouchableOpacity onPress={this.signIn}> */}
-                  <Button rounded style={{
-                    width: width / 2, backgroundColor: "white", justifyContent: "center",
-                    alignItems: "center"
-                  }}
+                <View style={{ padding: 5, paddingTop: 10 }}>
+
+
+                  <TouchableOpacity
+                    activeOpacity={2}
                     onPress={this.signIn}
                   >
 
-                    <Text style={{
-                      color: "#000",
-                      fontFamily: " OpenSans-Regular",
-                    }}>
-                      Login
+                    <Button rounded style={{
+                      width: width / 2, backgroundColor: "white", justifyContent: "center",
+                      alignItems: "center"
+                    }}
+                    >
+
+                      <Text style={{
+                        color: "#000",
+                        fontFamily: " OpenSans-Regular",
+                      }}
+                        onPress={this.signIn}
+                      >
+                        Login
                    </Text>
-                  </Button>
+                    </Button>
+                  </TouchableOpacity>
 
 
                 </View>
-
-
-
-
-
-                <Text style={{ color: "#dcdedf", paddingRight: 5, color: "white", fontFamily: " OpenSans-Regular", fontWeight: "200" , paddingBottom:80,
-              paddingTop:20}}>
+                <Text style={{
+                  color: "#dcdedf", paddingRight: 0, color: "white", fontFamily: " OpenSans-Regular",
+                  fontWeight: "200", paddingBottom: 0,
+                  paddingTop: 20
+                }}>
                   New User?
               <Text
                     style={{
                       color: "#dcdedf",
                       // textDecorationLine: "underline",
                       color: "white",
-                      fontWeight: "300",
+                      fontWeight: "400",
                       fontFamily: " OpenSans-Regular",
-                      fontSize: 15,
+                      fontSize: 18,
 
                     }}
                     onPress={() => {
@@ -238,52 +263,102 @@ class SignIn extends Component {
               </Text>
 
                 </Text>
-                <Text style={{ color: "#dcdedf", color: "white", fontFamily: " OpenSans-Regular", fontWeight: "200", textAlign: "center",}}>
-                  Copyright © 2018, Maggie
-              </Text>
-                
 
-                 
-
-                
               </View>
+              {/* <View style={{
 
+              
+                // marginBottom: 5
+              }}> */}
+
+              <View style={{
+
+                height: height / 10,
+                paddingTop: 20,
+                justifyContent:"center",
+                alignContent:"center",
+                alignItems:"center",
+                textAlign:"center",
                 
-              
-              
 
+
+              }}> 
+                <Text
+                  onPress={() => { this.props.navigation.navigate('privacy') }}
+                  style={{
+                    color: "#fff", textDecorationColor: '#fff',
+                    textDecorationLine: "underline",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    width: "24%",
+                    // backgroundColor: "red",
+                    fontFamily: " OpenSans-Regular",
+                    fontWeight: "300",
+                    paddingBottom: 10,
+
+
+                  }}>
+                  Data Privacy Policy</Text>
+
+                <Text style={{
+                  color: "#fff", justifyContent: "center",
+                  textAlign: "center", fontFamily: " OpenSans-Regular", fontWeight: "300", marginBottom: 0
+                }}>
+                  Copyright © {this.state.NewYear} Maggie </Text>
+                  </View>
 
             </ImageBackground>
           </View>
 
+
+          </View>
+
+          {/* </ScrollView> */}
+
+
+
+
         </View>
-      </ScrollView>
 
-    );
+        );
+    
+      }
+    }
+    
+    
+    
+const styles = StyleSheet.create({
+          container: {
 
-  }
-}
+          justifyContent: 'center'
+      },
+  horizontal: {
+          flexDirection: 'row',
+        justifyContent: 'space-around',
+        padding: 2
+      }
+    })
 function mapStateToProps(state) {
-  console.log("SIGNING ERRORR", state.authReducer.signInerror)
+          console.log("SIGNING ERRORR", state.authReducer.signInerror)
   return {
-    isProgress: state.authReducer.isProgress,
-    signInerror: state.authReducer.signInerror,
-    isError: state.authReducer.isError,
-    isProgress: state.authReducer.isProgress
-
-
-
-  };
-}
+          isProgress: state.authReducer.isProgress,
+        signInerror: state.authReducer.signInerror,
+        isError: state.authReducer.isError,
+        isProgress: state.authReducer.isProgress
+    
+    
+    
+      };
+    }
 function mapDispatchToProps(dispatch) {
   return {
 
-    signInAction: (payload, path) => {
-      dispatch(signinFunc(payload, path));
+          signInAction: (payload, path) => {
+          dispatch(signinFunc(payload, path));
+        }
+      };
     }
-  };
-}
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(SignIn);
+    export default connect(
+      mapStateToProps,
+      mapDispatchToProps
+    )(SignIn);

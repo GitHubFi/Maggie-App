@@ -8,6 +8,7 @@ import firebase from "react-native-firebase";
 const { width, height, scale, fontScale } = Dimensions.get("window");
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { connect } from "react-redux";
+import moment from 'moment';
 
 
 export default class Chat extends Component {
@@ -20,7 +21,8 @@ export default class Chat extends Component {
             //     phone: props.navigation.state.params.userDetail.phoneNumber,
             //   },
             textMessage: "",
-            messageList: []
+            messageList: [],
+           
         };
     }
     static navigationOptions = ({ navigation }) => {
@@ -80,11 +82,6 @@ export default class Chat extends Component {
 
         console.log("CURRENT DATE", date)
         return datevalues[0] + "/" + datevalues[1] + "/" + datevalues[2];
-
-
-
-
-
     }
 
     convertTime = time => {
@@ -93,11 +90,17 @@ export default class Chat extends Component {
         let c = new Date();
         let result = (d.getHours() < 10 ? "0" : "") + d.getHours() + ":";
         result += (d.getMinutes() < 10 ? "0" : "") + d.getMinutes();
+
+
+     
         // if (c.getDay() !== d.getDay()) {
         //     result = d.getDay() + "" + d.getMonth() + "" + result;
         // }
         return result;
     };
+
+
+
     async componentWillMount() {
         let user = await AsyncStorage.getItem('User');
         firebase
@@ -150,15 +153,15 @@ export default class Chat extends Component {
                 width: "90%",
                 alignSelf: item.from === this.props.currentUser ? "flex-start" : "flex-end",
                 backgroundColor: item.from === this.props.currentUser ? "#fff" : "#fff",
-               
+
                 borderBottomLeftRadius: 30,
                 borderBottomRightRadius: 10,
 
                 marginBottom: 10,
                 borderTopRightRadius: -20,
                 borderTopLeftRadius: 30,
-                
-                
+
+
 
             }}
             >
@@ -185,6 +188,7 @@ export default class Chat extends Component {
                     }}
                 >
                     {this.convertTime(item.time)}{"  "}
+                   
                     <Text
                         style={{
                             color: "#000",
@@ -268,7 +272,7 @@ export default class Chat extends Component {
                                             fontSize: 16,
                                             fontWeight: 'bold',
                                             padding: 20,
-                                        
+
                                         }}
                                     > Send</Text>
                                 </TouchableOpacity>

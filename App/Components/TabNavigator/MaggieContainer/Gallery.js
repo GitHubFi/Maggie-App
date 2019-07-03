@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
-import { StyleSheet, View, TouchableOpacity, ScrollView, Dimensions, Image} from 'react-native';
+import { StyleSheet, View, TouchableOpacity, ScrollView, Dimensions, Image } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Text, Body, Icon } from 'native-base';
+import firebase from "react-native-firebase";
+
+
 const { width, height, scale, fontScale } = Dimensions.get("window");
 
 export default class Gallery extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            url: null
+        };
+    }
     static navigationOptions = ({ navigation }) => {
         return {
             headerTitle: "GALLERY",
@@ -34,19 +43,43 @@ export default class Gallery extends Component {
                 textAlign: "center",
                 flex: 1,
                 marginLeft: -30,
-                fontSize:width/23,
+                fontSize: width / 23,
             },
-            headerStyle: { backgroundColor: "#fff",
-            
-            fontFamily: "OpenSans-Semi" }
+            headerStyle: {
+                backgroundColor: "#fff",
+
+                fontFamily: "OpenSans-Semi"
+            }
         };
         // headerRight: <View />;
     };
+
+
+
+    componentWillMount() {
+        const ref = firebase.storage().ref('gallery').child('77.jpg');
+
+        console.log(ref);
+        ref.getDownloadURL()
+            .then((url) => {
+
+                console.log("All urls:",url);
+                this.setState({
+                    url: url
+                })
+            });
+
+
+
+
+
+
+    }
     render() {
         return (
 
             <ScrollView >
-            
+
                 <View style={{
                     backgroundColor: "black",
                     flexDirection: "column", padding: 20, backgroundColor: "black",
@@ -54,82 +87,84 @@ export default class Gallery extends Component {
                 }}>
                     {/* <View style={{ flex: 1, justifyContent:"center", }}> */}
                     {/* <View style={{ flex: 1 / 2, flexDirection: "column", padding: 20 ,paddingBottom:10,backgroundColor: "black",justifyContent:"center",alignContent:"center",alignItems:"center" }}> */}
-                    
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
+
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first.jpg")}
+                        // source={{ uri: this.state.url }}
+
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
 
 
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first1.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first1.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
 
 
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first2.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first2.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
 
 
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first3.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first3.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
 
 
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first4.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first5.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first6.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first7.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first8.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first9.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first10.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first11.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first12.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first13.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first14.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first4.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first5.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first6.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first7.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first8.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first9.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first10.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first11.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first12.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first13.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first14.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
 
-                        <Image
-                            source={require("../../../../assets/maggie/gallery/first15.jpg")}
-                            style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
-                        />
+                    <Image
+                        source={require("../../../../assets/maggie/gallery/first15.jpg")}
+                        style={{ width: "85%", height: height / 2, justifyContent: "center", margin: 10, marginLeft: 10, marginRight: 10 }}
+                    />
                 </View>
-                   
+
 
 
                 {/* </View> */}

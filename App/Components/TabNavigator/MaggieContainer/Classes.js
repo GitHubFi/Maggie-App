@@ -235,7 +235,7 @@ export default class Classes extends Component {
                                     fontSize: 20,}}>NOTE :</Text>
                                 <ListItem>
 
-                                    <Textarea rowSpan={5} bordered placeholder="write here"
+                                    <Textarea rowSpan={5} bordered placeholder="WRITE HERE"
                                         style={{ color: "#fff", width: "100%" ,  fontFamily: " OpenSans-Regular",
                                         fontSize: 15,}}
                                         onChangeText={note => this.setState({ note })}
@@ -329,7 +329,7 @@ fontSize: 20, }} type="text" keyboardType={"numeric"} onChangeText={number => th
 fontSize: 20,}}>NOTE :</Text>
 <ListItem>
 
-<Textarea rowSpan={5} bordered placeholder="write here"
+<Textarea rowSpan={5} bordered placeholder="WRITE HERE"
     style={{ color: "#fff", width: "100%" ,  fontFamily: " OpenSans-Regular",
     fontSize: 15,}}
     onChangeText={note => this.setState({ note })}

@@ -31,12 +31,19 @@ class SignUp extends Component {
       firstname: "",
       lastname: "",
       mobilenumber: "",
+      NewYear: ""
     };
   }
   static navigationOptions = {
     header: null
   };
 
+  componentDidMount() {
+    let year = new Date().getFullYear(); //Current Year
+    this.setState({
+      NewYear: year
+    })
+  }
   signup = () => {
 
     // let { country, phonesNumber, code } = this.state;
@@ -89,152 +96,157 @@ class SignUp extends Component {
   };
   render() {
     return (
-      <ScrollView
-        contentContainerStyle={{
-          height,
-          width,
-          // backgroundColor: "#272727"
+      // <ScrollView
+      //   contentContainerStyle={{
+      //     // height,
+      //     width,
+      //     // backgroundColor: "#272727"
+      //   }}
+      //   keyboardDismissMode="interactive"
+      //   keyboardShouldPersistTaps="handled"
+      // >
+      <View
+        style={{
+          flex: 1,
+          height:height
+          // padding: width / 20,
+          // justifyContent: "space-around"
         }}
-        keyboardDismissMode="interactive"
-        keyboardShouldPersistTaps="handled"
       >
+
         <View
-          style={{
-            flex: 1,
-            // padding: width / 20,
-            // justifyContent: "space-around"
-          }}
-        >
+         style={{
+          // flex: 1,
+          height:height
+          // padding: width / 20,
+          // justifyContent: "space-around"
+        }}>
 
-          <View>
+          <ImageBackground source={require("../../../assets/maggie/Screenshot_8.jpg")}
+            blurRadius={Platform.OS == 'ios' ? 1 : 2}
+            style={{ width: '100%', height: '100%' }}>
+            <View
+              style={{
+                flex: 1,
+                justifyContent: "center",
+                alignItems: "center",
+                height:'100%'
+              }}>
+              <View style={{ width: width / 2 }}>
+                <Image
+                  source={require("../../../assets/maggie/maggie-white-logo.png")}
+                  style={{ width: width / 2, height: height / 10, }}
+                />
+              </View>
 
-            <ImageBackground source={require("../../../assets/maggie/Screenshot_8.jpg")}
-              blurRadius={Platform.OS == 'ios' ? 1 : 2}
-              style={{ width: '100%', height: '100%' }}>
-              <View
-                style={{
-                  flex: 1,
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}>
-                <View style={{ width: width / 2, height: height / 5 }}>
-                  <Image
-                    source={require("../../../assets/maggie/maggie-white-logo.png")}
-                    style={{ width: width / 2, height: height / 10, }}
-                  />
-                </View>
+              <Text style={{
+                color: '#dcdedf',
+                fontFamily: " OpenSans-Regular",
+                textAlign: "center",
+                fontWeight: 'bold', fontSize: 15,
+                paddingTop: 25,
+                paddingBottom: 10
+              }}
+              >
+                Create New Account</Text>
+              <View style={{
+                width: "80%",
+                height: height / 2.5,
+                backgroundColor: "#dcdedf",
+                opacity: 0.9,
+                padding: 10
 
-                <Text style={{
-                  color: '#dcdedf',
-                  fontFamily: " OpenSans-Regular",
-                  textAlign: "center",
-                  fontWeight: 'bold', fontSize: 15,
-                  paddingTop: 25,
-                  paddingBottom: 10
-                }}
-                >
-                  Create New Account</Text>
-                <View style={{
-                  width: "80%", height: height / 2.5,
-                  backgroundColor: "#dcdedf",
-                  opacity: 0.9, padding: 10
-                }}>
-                  {/* <MaterialCommunityIcons name="email" size={25} color="#24516e" /> */}
+              }}>
+                {/* <MaterialCommunityIcons name="email" size={25} color="#24516e" /> */}
 
-                  <Input type="text" placeholder="First Name"
+                <Input type="text" placeholder="First Name"
 
-                    style={{
-                      color: "#000",
-                      fontWeight: "200",
-                      padding: 8,
-                      borderBottomColor: 'white',
-                      borderBottomWidth: 1,
-                      fontSize: 15,
-                    }}
+                  style={{
+                    color: "#000",
+                    fontWeight: "200",
+                    padding: 8,
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    fontSize: 15,
+                  }}
 
-                    onChangeText={firstname => this.setState({ firstname })}>
-                    {/* <Icon active name="person" /> */}
-                  </Input>
-                  <Input type="text" placeholder="Last Name"
-                    style={{
-                      color: "#000",
-                      fontWeight: "200",
-                      padding: 8,
-                      borderBottomColor: 'white',
-                      borderBottomWidth: 1,
-                      fontSize: 15,
-                    }}
-                    onChangeText={lastname => this.setState({ lastname })}>
-                  </Input>
-                  <Input type="text" keyboardType={"email-address"} placeholder={"Email Address"} placeholder="Email Address"
+                  onChangeText={firstname => this.setState({ firstname })}>
+                  {/* <Icon active name="person" /> */}
+                </Input>
+                <Input type="text" placeholder="Last Name"
+                  style={{
+                    color: "#000",
+                    fontWeight: "200",
+                    padding: 8,
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    fontSize: 15,
+                  }}
+                  onChangeText={lastname => this.setState({ lastname })}>
+                </Input>
+                <Input type="text" keyboardType={"email-address"} placeholder={"Email Address"} placeholder="Email Address"
 
-                    style={{
-                      color: "#000",
-                      fontWeight: "200",
-                      padding: 8,
-                      borderBottomColor: 'white',
-                      borderBottomWidth: 1,
-                      fontSize: 15,
-                    }}
-                    onChangeText={email => this.setState({ email })}>
-                  </Input>
-                  <Input type="number" placeholder="Mobile Number" keyboardType="numeric"
-                    style={{
-                      color: "#000",
-                      fontWeight: "200",
-                      padding: 8,
-                      borderBottomColor: 'white',
-                      borderBottomWidth: 1,
-                      fontSize: 15,
-                    }}
-                    onChangeText={mobilenumber => this.setState({ mobilenumber })}>
-                  </Input>
+                  style={{
+                    color: "#000",
+                    fontWeight: "200",
+                    padding: 8,
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    fontSize: 15,
+                  }}
+                  onChangeText={email => this.setState({ email })}>
+                </Input>
+                <Input type="number" placeholder="Mobile Number" keyboardType="numeric"
+                  style={{
+                    color: "#000",
+                    fontWeight: "200",
+                    padding: 8,
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    fontSize: 15,
+                  }}
+                  onChangeText={mobilenumber => this.setState({ mobilenumber })}>
+                </Input>
 
-                  <Input type="text" placeholder="Password" secureTextEntryss
-                    style={{
-                      color: "#000",
-                      fontWeight: "200",
-                      padding: 8,
-                      borderBottomColor: 'white',
-                      borderBottomWidth: 1,
-                      fontSize: 15,
-                    }}
-                    onChangeText={password => this.setState({ password })}>
-                  </Input>
-                  {/* <Entypo name={"lock"} size={25} color="#24516e" /> */}
-                  <Input type="password" placeholder="Confirm Password" secureTextEntry
-                    style={{
-                      color: "#000",
-                      fontWeight: "200",
-                      padding: 8,
-                      fontSize: 15,
-
-
-                      borderBottomColor: '#dcdedf',
-
-                    }}
-                    onChangeText={confirmPassword => this.setState({ confirmPassword })}
-                  ></Input>
-
-                </View>
+                <Input type="text" placeholder="Password" secureTextEntryss
+                  style={{
+                    color: "#000",
+                    fontWeight: "200",
+                    padding: 8,
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    fontSize: 15,
+                  }}
+                  onChangeText={password => this.setState({ password })}>
+                </Input>
+                {/* <Entypo name={"lock"} size={25} color="#24516e" /> */}
+                <Input type="password" placeholder="Confirm Password" secureTextEntry
+                  style={{
+                    color: "#000",
+                    fontWeight: "200",
+                    padding: 8,
+                    fontSize: 15,
 
 
-                {/* <View style={{ justifyContent: "flex-end", alignItems: "flex-end", alignContent: "flex-end", }}>
-      <Text style={{
-        color: "white", paddingBottom: 10, justifyContent: "flex-end", alignItems: "flex-end", alignContent: "flex-end"
-      }}>
-        Forget Password?
-    </Text>
-    </View> */}
-                <View style={{ height: height / 6, padding: 5 }}>
+                    borderBottomColor: '#dcdedf',
+
+                  }}
+                  onChangeText={confirmPassword => this.setState({ confirmPassword })}
+                ></Input>
+
+              </View>
 
 
-                  {/* <TouchableOpacity onPress={this.signup} > */}
+
+              <View style={{ paddingTop: 15, paddingBottom: 10 }}>
+
+
+                <TouchableOpacity activeOpacity={2} onPress={this.signup} >
                   <Button rounded style={{
                     width: width / 2, backgroundColor: "#fff", justifyContent: "center",
                     alignItems: "center"
                   }}
-                    onPress={this.signup}
+                  // onPress={this.signup}
 
                   >
 
@@ -242,198 +254,101 @@ class SignUp extends Component {
                       color: "#000",
                       fontFamily: " OpenSans-Regular",
 
-                    }}>
+                    }}
+                      onPress={this.signup}>
                       Register
                         </Text>
                   </Button>
-                  {/* </TouchableOpacity> */}
+                </TouchableOpacity>
 
-                  <Text>
-                    {this.props.signuperror}
-                  </Text>
-                </View>
-
-                {/* <View
-    >
-      <Text
-        style={{
-          color: "white", padding: 15,
-          textDecorationLine: "underline",
-          textDecorationColor: "#05527c"
-        }}
-        onPress={() => {
-          this.replaceScreen("signIn");
-        }}
-   
-        
-      >Already have account? Login Now</Text>
-    </View> */}
-
-                <Text style={{ color: "#dcdedf", paddingRight: 5, color: "white", paddingBottom: 15 }}>
-                  Already have account ?
-              <Text
-                    style={{
-                      color: "#dcdedf",
-                      color: "white",
-                      fontWeight: "bold",
-                      fontFamily: 'Arial, Helvetica, sans-serif',
-                      fontSize: 15
-                      // textDecorationLine: "underline",
-                      // textDecorationColor: "#dcdedf"
-                    }}
-                    onPress={() => {
-                      this.props.navigation.navigate('signIn')
-                    }}
-
-                  >
-                    {"  "} Login Now
-              </Text>
+                <Text>
+                  {this.props.signuperror}
                 </Text>
-
-
-                {/* <View style={{
-      
-      justifyContent: 'flex-end',
-      marginBottom: 10
-    }}>
-
-      <Text style={{ color: "white" }}>Data Privacy Policy</Text>
-      <Text style={{ color: "white" }}>copyright © 2019 Maggie </Text>
-    </View> */}
-
-
-
-
-
-
-
               </View>
 
 
-            </ImageBackground>
-          </View>
-
-          {/* <View
-            style={{
-              flex: 0.2,
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          >
-            <Image
-              source={require("../../../assets/download.jpg")}
-              style={{ width: width / 4, height: width / 4, borderRadius: 50 }}
-            />
-          </View> */}
-          {/* <View style={{ flex: 0.5, justifyContent: "space-around" }}>
-            <View
-              style={{
-                flex: 0.3,
-                flexDirection: "row",
-                alignItems: "center",
-                borderBottomColor: "#fff",
-                borderBottomWidth: 1
-              }}
-            >
-              <MaterialCommunityIcons name="email" size={25} color="#fff" />
-              <Input
-                placeholderTextColor={"#fff"}
-                placeholder={"Email"}
-                placeholder="email"
-                style={{ color: "#fff" }}
-                keyboardType={"email-address"}
-                onChangeText={email => this.setState({ email })}
-              />
-            </View>
-            <View
-              style={{
-                flex: 0.3,
-                flexDirection: "row",
-                alignItems: "center",
-                borderBottomColor: "#fff",
-                borderBottomWidth: 1
-              }}
-            >
-              <Entypo name={"lock"} size={25} color="#fff" />
-              <Input
-                placeholderTextColor={"#fff"}
-                placeholder={"Password"}
-                placeholder="password"
-                style={{ color: "#fff" }}
-                secureTextEntry
-                onChangeText={password => this.setState({ password })}
-              />
-            </View>
-            <View
-              style={{
-                flex: 0.2,
-                flexDirection: "row",
-                borderBottomColor: "#fff",
-                alignItems: "center",
-                borderBottomWidth: 1
-              }}
-            >
-              <Entypo name={"lock"} size={25} color="#fff" />
-
-              <Input
-                style={{ color: "#fff" }}
-                placeholder="confirm password"
-                placeholderTextColor={"#fff"}
-                secureTextEntry
-                onChangeText={confirmPassword =>
-                  this.setState({ confirmPassword })
-                }
-              />
-            </View>
-            <View
-              style={{
-                flex: 0.3,
-                justifyContent: "center",
-                alignItems: "center"
-              }}
-            >
-              <Button
-                style={{
-                  marginTop: height / 25,
-                  width: width * 0.6,
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  backgroundColor: "#fafafa",
-                  alignSelf: "center",
-                  borderRadius: width / 12
-                }}
-                onPress={this.signIn}
-              >
-                <Text style={{ color: "#272727" }}>SignUp</Text>
-              </Button>
-            </View>
-          </View>
-          <View
-            style={{
-              flex: 0.1,
-              justifyContent: "center",
-              alignItems: "center"
-            }}
-          >
-            <Text style={{ color: "#0fb9b1" }}>
-              Already an account ?
+              <Text style={{ color: "#dcdedf", paddingRight: 5, color: "white", paddingBottom: 15 }}>
+                Already have account ?
               <Text
-                style={{
-                  color: "#2bcbba",
-                  textDecorationLine: "underline",
-                  textDecorationColor: "#fff"
-                }}
-                onPress={() => {
-                  this.replaceScreen("signUp");
-                }}
-              >
-                signin
+                  style={{
+                    color: "#dcdedf",
+                    color: "white",
+                    fontWeight: "400",
+                    fontFamily: 'Arial, Helvetica, sans-serif',
+                    fontSize: 18
+                    // textDecorationLine: "underline",
+                    // textDecorationColor: "#dcdedf"
+                  }}
+                  onPress={() => {
+                    this.props.navigation.navigate('signIn')
+                  }}
+
+                >
+                  {"  "} Login Now
               </Text>
-            </Text>
-          </View> */}
+              </Text>
+
+
+              <View style={{
+
+                height:height/10,
+                paddingTop:20
+
+
+              }}>
+
+                <Text
+                  onPress={() => { this.props.navigation.navigate('privacy') }}
+                  style={{
+                    color: "#fff", textDecorationColor: '#fff',
+                    textDecorationLine: "underline",
+                    justifyContent: "center",
+                    textAlign: "center",
+                    paddingBottom: 10,
+                    fontFamily: " OpenSans-Regular",
+                    fontWeight: "300",
+                  }}>
+                  Data Privacy Policy</Text>
+
+                <Text style={{
+                  color: "#fff", justifyContent: "center",
+                  textAlign: "center", fontFamily: " OpenSans-Regular", fontWeight: "300",
+                }}>
+                  Copyright © {this.state.NewYear} Maggie </Text>
+              </View>
+            </View>
+            {/* <View style={{
+
+
+            }}>
+
+              <Text
+                onPress={() => { this.props.navigation.navigate('privacy') }}
+                style={{
+                  color: "#fff", textDecorationColor: '#fff',
+                  textDecorationLine: "underline",
+                  justifyContent: "center",
+                  textAlign: "center",
+                  paddingBottom: 10,
+                  fontFamily: " OpenSans-Regular",
+                  fontWeight: "300",
+                }}>
+                Data Privacy Policy</Text>
+
+              <Text style={{
+                color: "#fff", justifyContent: "center",
+                textAlign: "center", fontFamily: " OpenSans-Regular", fontWeight: "300",
+              }}>
+                Copyright © {this.state.NewYear} Maggie </Text>
+            </View> */}
+
+
+          </ImageBackground>
         </View>
-      </ScrollView>
+
+
+      </View>
+      // </ScrollView>
     );
   }
 }
