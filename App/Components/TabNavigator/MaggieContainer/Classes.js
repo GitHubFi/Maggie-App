@@ -85,7 +85,7 @@ export default class Classes extends Component {
                         >
                             HAIR STYLING COURSE</Text> */}
                         <View style={{
-                            width: width / 1,
+                            width: width 
                             // justifyContent:"flex-start",
                        
                        
@@ -93,10 +93,11 @@ export default class Classes extends Component {
 
                             <View style={{
                                 opacity: 0.9,
-                                width: "85%", 
+                                width: "95%", 
                                 // justifyContent:"flex-start",
-                                textAlign:"center",
-                                paddingLeft:53
+                                textAlign:"left",
+                                // paddingLeft:53
+                                paddingLeft:width/8
 
                             }}>
                                  <Text style={{
@@ -205,7 +206,7 @@ export default class Classes extends Component {
 
 
 
-                                <ListItem>
+                                {/* <ListItem>
 
                                     <Text style={{ color: "#fff",  fontFamily: " OpenSans-Regular",
                                     fontSize: 20, }}>NAME </Text>
@@ -241,7 +242,64 @@ export default class Classes extends Component {
                                         onChangeText={note => this.setState({ note })}
                                     />
 
-                                </ListItem>
+                                </ListItem> */}
+                                <View style={{
+                width: "95%",
+                height: height / 2.5,
+                backgroundColor: "#dcdedf",
+                opacity: 0.9,
+                padding: 10
+
+              }}>
+                {/* <MaterialCommunityIcons name="email" size={25} color="#24516e" /> */}
+
+                <Input type="text" placeholder="Enter Your Name"
+
+                  style={{
+                    color: "#000",
+                    fontWeight: "200",
+                    padding: 8,
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    fontSize: 15,
+                  }}
+
+                  onChangeText={firstname => this.setState({ firstname })}>
+                  {/* <Icon active name="person" /> */}
+                </Input>
+                <Input type="text" placeholder="Enter Your Email"
+                  style={{
+                    color: "#000",
+                    fontWeight: "200",
+                    padding: 8,
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    fontSize: 15,
+                  }}
+                  onChangeText={lastname => this.setState({ lastname })}>
+                </Input>
+                
+                <Input type="number" placeholder="Enter Mobile No." keyboardType="numeric"
+                  style={{
+                    color: "#000",
+                    fontWeight: "200",
+                    padding: 8,
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    fontSize: 15,
+                  }}
+                  onChangeText={mobilenumber => this.setState({ mobilenumber })}>
+                </Input>
+
+               
+                {/* <Entypo name={"lock"} size={25} color="#24516e" /> */}
+                <Textarea rowSpan={5} bordered placeholder="Write Here"
+                                        style={{ color: "#000", width: "100%" ,  fontFamily: " OpenSans-Regular",
+                                        fontSize: 15,}}
+                                        onChangeText={note => this.setState({ note })}
+                                    />
+
+              </View>
                             </View>
                         </View>
 
@@ -261,7 +319,8 @@ export default class Classes extends Component {
                                 textAlign: "center",
                                 alignContent: "center",
                             }}
-                                onPress={this.handleEmail}>
+                                // onPress={this.handleEmail}
+                                >
 
                                 <Text style={{ color: "#000" }}> Sign Up </Text>
                             </Button>
@@ -269,17 +328,18 @@ export default class Classes extends Component {
 
 
                             <View style={{
-                            width: width / 1,
+                            width: width 
                         }}>
 
                             <View style={{
                               
 
-                                opacity: 0.9,
-                                width: "85%", 
-                                // justifyContent:"flex-start",
-                                textAlign:"center",
-                                paddingLeft:53
+                              opacity: 0.9,
+                              width: "95%", 
+                              // justifyContent:"flex-start",
+                              textAlign:"center",
+                              // paddingLeft:53
+                              paddingLeft:width/8
 
                             }}>
 
@@ -299,7 +359,7 @@ export default class Classes extends Component {
     
                            </Text>
                                
-                           <ListItem>
+                           {/* <ListItem>
 
 <Text style={{ color: "#fff",  fontFamily: " OpenSans-Regular",
 fontSize: 20, }}>NAME </Text>
@@ -335,7 +395,64 @@ fontSize: 20,}}>NOTE :</Text>
     onChangeText={note => this.setState({ note })}
 />
 
-</ListItem>
+</ListItem> */}
+<View style={{
+                width: "95%",
+                height: height / 2.5,
+                backgroundColor: "#dcdedf",
+                opacity: 0.9,
+                padding: 10
+
+              }}>
+                {/* <MaterialCommunityIcons name="email" size={25} color="#24516e" /> */}
+
+                <Input type="text" placeholder="Enter Your Name"
+
+                  style={{
+                    color: "#000",
+                    fontWeight: "200",
+                    padding: 8,
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    fontSize: 15,
+                  }}
+
+                  onChangeText={firstname => this.setState({ firstname })}>
+                  {/* <Icon active name="person" /> */}
+                </Input>
+                <Input type="text" placeholder="Enter Your Email"
+                  style={{
+                    color: "#000",
+                    fontWeight: "200",
+                    padding: 8,
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    fontSize: 15,
+                  }}
+                  onChangeText={lastname => this.setState({ lastname })}>
+                </Input>
+                
+                <Input type="number" placeholder="Enter Mobile No." keyboardType="numeric"
+                  style={{
+                    color: "#000",
+                    fontWeight: "200",
+                    padding: 8,
+                    borderBottomColor: 'white',
+                    borderBottomWidth: 1,
+                    fontSize: 15,
+                  }}
+                  onChangeText={mobilenumber => this.setState({ mobilenumber })}>
+                </Input>
+
+               
+                {/* <Entypo name={"lock"} size={25} color="#24516e" /> */}
+                <Textarea rowSpan={5} bordered placeholder="Write Here"
+                                        style={{ color: "#000", width: "100%" ,  fontFamily: " OpenSans-Regular",
+                                        fontSize: 15,}}
+                                        onChangeText={note => this.setState({ note })}
+                                    />
+
+              </View>
                             </View>
                         </View>
 
@@ -355,7 +472,8 @@ fontSize: 20,}}>NOTE :</Text>
                                 textAlign: "center",
                                 alignContent: "center",
                             }}
-                                onPress={this.handleEmail}>
+                                // onPress={this.handleEmail}
+                                >
 
                                 <Text style={{ color: "#000" }}> Sign Up  </Text>
                             </Button>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, StyleSheet, View, TouchableOpacity, ImageBackground, Platform, Dimensions, ScrollView, Image } from 'react-native';
+import { Text, StyleSheet, View, TouchableOpacity, ImageBackground, Platform, WebView, Dimensions, ScrollView, Image } from 'react-native';
 import {
     Input, Button, Spinner, Form, Item, Picker, Label, Container,
     Header, Content, ListItem, CheckBox, Body, DatePicker, Textarea
@@ -38,12 +38,14 @@ export default class About extends Component {
                 textAlign: "center",
                 flex: 1,
                 marginLeft: -30,
-                fontSize:width/23,
+                fontSize: width / 23,
 
             },
-            headerStyle: { backgroundColor: "#fff"
-            ,
-            fontFamily: "OpenSans-Semi" }
+            headerStyle: {
+                backgroundColor: "#fff"
+                ,
+                fontFamily: "OpenSans-Semi"
+            }
         };
         headerRight: <View />;
     };
@@ -135,9 +137,9 @@ export default class About extends Component {
                         // flexDirection: "column",
                         padding: 20,
                         //justifyContent: "center",
-                       // alignContent: "center",
+                        // alignContent: "center",
                         alignItems: "center",
-                         textAlign: "justify",
+                        textAlign: "justify",
                         width: "100%",
                         backgroundColor: "#000",
 
@@ -190,7 +192,7 @@ export default class About extends Component {
                         color: "#fff",
                         paddingTop: 10,
                         //width: "100%",
-                        textAlign:"center",
+                        textAlign: "center",
                         // textAlign: "center",
                         //justifyContent:"flex-start",
                         // alignSelf: "auto",
@@ -199,7 +201,7 @@ export default class About extends Component {
                         // textAlign: 'center',
                         // textAlignVertical: 'center',
                         // textAlignVertical:"auto",
-                        lineHeight:24,
+                        lineHeight: 24,
                         // textTransform:"uppercase",
 
                         //   justifyContent:"auto",
@@ -217,11 +219,12 @@ export default class About extends Component {
                          minute trends and techniques.Join me and my team to get into the whimsical world of hairstyling and get the most unique and chic hairdo.
                          I am is a pro at doing bridal, formal, semi-formal and casual hairstyling and transforms the texture and outlook of hair, I do special
                          occasion’s hair styles, Wedding, graduations party, and casual hairdos with perfection.
+                       
                         </Text>
                     {/* </View> */}
 
                 </View>
-
+               
             </ScrollView>
 
             // </ImageBackground>

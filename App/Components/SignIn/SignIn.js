@@ -73,7 +73,7 @@ class SignIn extends Component {
       return;
     } else if (this.props.isError === true) {
       Alert.alert(
-        'Worng Password',
+        '',
         this.props.signInerror,
         [
 
@@ -179,16 +179,25 @@ class SignIn extends Component {
 
 
                 <View style={{
+                  // backgroundColor: "white",
+                  // width: width / 4,
+                  paddingLeft: "52%",
+
 
                 }}>
                   <Text style={{
                     color: "white",
+
                     paddingBottom: 20,
-
-                    paddingTop: 18,
-
-
-                    paddingLeft: "40%",
+                    // justifyContent: "flex-end",
+                    // textAlign: "left",
+                    // alignContent:"flex-end",
+                    paddingTop: 15,
+                    textAlign: "center",
+                    // backgroundColor: "red",
+                    //  width: width/6 ,
+                   
+                    paddingRight: 20,
                     fontWeight: "bold",
                     fontSize: 15,
                     fontFamily: " OpenSans-Regular",
@@ -273,16 +282,16 @@ class SignIn extends Component {
 
               <View style={{
 
-                height: height / 10,
-                paddingTop: 20,
-                justifyContent:"center",
-                alignContent:"center",
-                alignItems:"center",
-                textAlign:"center",
-                
+                height: height / 7,
+                paddingTop: 0,
+                justifyContent: "center",
+                alignContent: "center",
+                alignItems: "center",
+                textAlign: "center",
 
 
-              }}> 
+
+              }}>
                 <Text
                   onPress={() => { this.props.navigation.navigate('privacy') }}
                   style={{
@@ -294,7 +303,7 @@ class SignIn extends Component {
                     // backgroundColor: "red",
                     fontFamily: " OpenSans-Regular",
                     fontWeight: "300",
-                    paddingBottom: 10,
+                    paddingBottom: 3,
 
 
                   }}>
@@ -302,63 +311,63 @@ class SignIn extends Component {
 
                 <Text style={{
                   color: "#fff", justifyContent: "center",
-                  textAlign: "center", fontFamily: " OpenSans-Regular", fontWeight: "300", marginBottom: 0
+                  textAlign: "center", fontFamily: " OpenSans-Regular", fontWeight: "300", marginBottom: 15
                 }}>
                   Copyright © {this.state.NewYear} Maggie </Text>
-                  </View>
+              </View>
 
             </ImageBackground>
           </View>
 
 
-          </View>
-
-          {/* </ScrollView> */}
-
-
-
-
         </View>
 
-        );
-    
-      }
-    }
-    
-    
-    
-const styles = StyleSheet.create({
-          container: {
+        {/* </ScrollView> */}
 
-          justifyContent: 'center'
-      },
+
+
+
+      </View>
+
+    );
+
+  }
+}
+
+
+
+const styles = StyleSheet.create({
+  container: {
+
+    justifyContent: 'center'
+  },
   horizontal: {
-          flexDirection: 'row',
-        justifyContent: 'space-around',
-        padding: 2
-      }
-    })
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    padding: 2
+  }
+})
 function mapStateToProps(state) {
-          console.log("SIGNING ERRORR", state.authReducer.signInerror)
+  console.log("SIGNING ERRORR", state.authReducer.signInerror)
   return {
-          isProgress: state.authReducer.isProgress,
-        signInerror: state.authReducer.signInerror,
-        isError: state.authReducer.isError,
-        isProgress: state.authReducer.isProgress
-    
-    
-    
-      };
-    }
+    isProgress: state.authReducer.isProgress,
+    signInerror: state.authReducer.signInerror,
+    isError: state.authReducer.isError,
+    isProgress: state.authReducer.isProgress
+
+
+
+  };
+}
 function mapDispatchToProps(dispatch) {
   return {
 
-          signInAction: (payload, path) => {
-          dispatch(signinFunc(payload, path));
-        }
-      };
+    signInAction: (payload, path) => {
+      dispatch(signinFunc(payload, path));
     }
-    export default connect(
-      mapStateToProps,
-      mapDispatchToProps
-    )(SignIn);
+  };
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignIn);

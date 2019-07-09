@@ -38,6 +38,8 @@ import Chat from './TabNavigator/MaggieContainer/Chat'
 import Privacy from './TabNavigator/MaggieContainer/Privacy'
 import ForgetPassword from './TabNavigator/MaggieContainer/ForgetPassword'
 import Notification from './TabNavigator/MaggieContainer/Notification'
+import Web from "./TabNavigator/MaggieContainer/Web"
+
 
 
 const AuthStackNavigator = createStackNavigator(
@@ -59,7 +61,9 @@ const AuthStackNavigator = createStackNavigator(
     splash: Splash,
     privacy:Privacy,
     forgetpassword:ForgetPassword,
-    Notification:Notification
+    Notification:Notification,
+    Web:Web,
+    
   },
   {
     initialRouteName: "splash"

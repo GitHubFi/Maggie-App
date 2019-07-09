@@ -75,7 +75,7 @@ export default class Price extends Component {
                             fontSize: 25,
                             paddingTop: 25,
                             paddingBottom: 10,
-                            paddingLeft: 45,
+                            paddingLeft: width/10,
                             // textDecorationLine: "underline",
                             // textDecorationStyle: "dashed",
 
@@ -140,15 +140,20 @@ export default class Price extends Component {
                                     <Text style={{
                                         fontSize: 20,
                                         fontFamily: " OpenSans-Regular",
-                                        paddingLeft: 14,
-                                        paddingBottom: height / 19
+                                        paddingLeft: 12,
+                                        paddingBottom: height / 19,
+                                        flexWrap: 'wrap',
                                     }}>{'\u25AA'} </Text>
                                     {/* </Body> */}
                                     {/* <Body style={{ textAlign:"left" ,paddingLeft:-20 ,paddingBottom:10}}> */}
 
                                     <Text style={{
-                                        color: "#000", fontSize: 20
-                                        , fontFamily: " OpenSans-Regular", textAlign: "left", paddingLeft: -20
+                                        color: "#000", 
+                                        fontSize: 20,
+                                        fontFamily: " OpenSans-Regular",
+                                        textAlign: "left", 
+                                        paddingLeft: -15,
+                                        flexWrap: 'wrap',
                                     }}> Blowout: (not included in any hair styling services so come with 100% dry
                                             hair for any & all appointment).
     
@@ -185,7 +190,7 @@ export default class Price extends Component {
                             fontSize: 25,
                             paddingTop: 25,
                             paddingBottom: 10,
-                            paddingLeft: 50,
+                            paddingLeft: width/10,
                             // textDecorationLine: "underline",
                             // textDecorationStyle: "dashed",
 
@@ -237,7 +242,7 @@ export default class Price extends Component {
                             fontSize: 25,
                             paddingTop: 25,
                             paddingBottom: 10,
-                            paddingLeft: 50,
+                            paddingLeft: width/10,
                             // textDecorationLine: "underline",
                             // textDecorationStyle: "dashed",
 
@@ -261,7 +266,8 @@ export default class Price extends Component {
                                         <Text style={{
                                             color: "#000", textAlign: "left",
                                             fontFamily: " OpenSans-Regular",
-                                            fontSize: 20, fontWeight: "200"
+                                            fontSize: 20, fontWeight: "200",
+                                            paddingLeft:10
                                         }}>The trial is an express version of the hair design for the day of the event which is failsafe method to ensure customer glee
                                     every time.</Text>
                                     </Body>
@@ -305,7 +311,7 @@ export default class Price extends Component {
                             // textDecorationLine: "underline",
                             // textDecorationStyle: "dashed",
 
-                            paddingLeft: 50,
+                            paddingLeft: width/10,
                         }}
                         > ADDITIONAL</Text>
 

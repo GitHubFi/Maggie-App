@@ -1,53 +1,59 @@
-// import React, { Component } from 'react';
-// import { Text, StyleSheet, View, TouchableWithoutFeedback } from 'react-native';
-// import Video from 'react-native-video';
 
-// export default class Videos extends Component {
+// import React, { Component } from 'react';
+// import {
+//     Platform,
+//     StyleSheet,
+//     Text,
+//     View,
+//     TouchableWithoutFeedback,
+//     Picker,
+//     ToastAndroid,
+//     ProgressBarAndroid,
+//     ScrollView,
+//     WebView,
+//     Dimensions,
+//     Modal,
+
+// } from 'react-native';
+
+// // import VideoPlayer from 'react-native-video-controls'
+// const { width, height, scale, fontScale } = Dimensions.get("window");
+// // import VideoPlayer from 'react-native-video-controls';
+// import Video from 'react-native-video';
+// import VideoList from './VideoList'
+
+
+// export default class Videos extends Component<Props> {
 //     constructor(props) {
 //         super(props);
+
 //         // init state variables
 //         this.state = {
-//             repeat: false,
-//             rate: 1,
-//             volume: 1,
-//             muted: false,
-//             resizeMode: 'contain',
-//             duration: 0.0,
-//             currentTime: 0.0,
-//             paused: true,
-//             pickerValueHolder: '1.0',
-//             pausedText: 'Play',
-//             hideControls: false,
+//             images: [
+//                 require("../../../../assets/video/video.mp4"),
+//                 require("../../../../assets/video/video3.mp4"),
+//                 require("../../../../assets/video/video2.mp4"),
+
+//             ],
+//             modalVisible: false,
+//             modalImage: require("../../../../assets/video/video.mp4"),
 //         };
+
 //     }
-//     // load video event
-//     onLoad = (data) => {
-//         this.setState({ duration: data.duration });
-//     };
 
-//     // video is playing
-//     onProgress = (data) => {
-//         this.setState({ currentTime: data.currentTime });
-//     };
 
-//       // video ends
-//   onEnd = () => {
-//     this.setState({ paused: true, pausedText: 'Play'})
-//     this.video.seek(0);
-//   };
-
-//   // on press video event
-//   onPressVideo() {
-//     // showing controls if they don't show
-//     if(this.state.hideControls){
-//       this.setState({hideControls: false});
-//       this.timeoutHandle = setTimeout(()=>{
-//         this.setState({hideControls: true});
-//       }, 1000);
+//     setModalVisible(visible, imageKey) {
+//         this, this.setState({
+//             modalImage: this.state.images[imageKey]
+//         })
+//         this, this.setState({
+//             modalVisible: visible
+//         })
 //     }
-//   }
 
-
+//     getImage() {
+//         return this.state.modalImage;
+//     }
 
 //     static navigationOptions = ({ navigation }) => {
 //         return {
@@ -58,391 +64,279 @@
 //                 alignSelf: "center",
 //                 textAlign: "center",
 //                 flex: 1,
-//                 marginLeft: -10
+//                 marginLeft: -30,
+//                 fontSize: width / 23,
+
 //             },
-//             headerStyle: { backgroundColor: "#fff" }
+//             headerStyle: {
+//                 backgroundColor: "#fff"
+//                 ,
+//                 fontFamily: "OpenSans-Semi"
+//             }
 //         };
 //         headerRight: <View />;
 //     };
+
+
 //     render() {
+//         let images = this.state.images.map((val, key) => {
+//             return
+//             //  <TouchableWithoutFeedback
+//             //     key={key}
+//             //     onPress={() => { this.setModalVisible(true, key) }}
+//             // >
+//             //     <View style={styles.imagewrap}>
+//             //         <VideoList source={val} />
+//             //     </View>
+//             // </TouchableWithoutFeedback>
+
+
+//         })
 //         return (
-//             <View style={styles.container}>
-//                 <TouchableWithoutFeedback style={styles.fullScreen}
-//                   style={styles.fullScreen}
-//                   onPress={() => this.onPressVideo()}>
-//                     <Video
-//                         ref={(ref: Video) => { this.video = ref }}
-//                         source={{ uri: 'https://rawgit.com/uit2712/Mp3Container/master/tom_and_jerry_31.mp4' }}
 
-//                         style={styles.fullScreen}
-//                         rate={this.state.rate}
-//                         repeat={this.state.repeat}
-//                         volume={this.state.volume}
-//                         muted={this.state.muted}
-//                         resizeMode={this.state.resizeMode}
-//                         paused={this.state.paused}
-//                         onLoad={this.onLoad}
-//                         onProgress={this.onProgress}
-//                         onEnd={this.onEnd}
+//             <ScrollView>
 
-//                     />
+//                 {/* <View style={styles.container}> */}
+
+//                     {/* <Modal style={styles.modal} animationType={'fade'}
+//                         transparent={true} visible={this.state.modalVisible}
+//                         onRequestClose={() => { }}>
+
+//                         <View style={styles.modal}>
+//                             <Text style={styles.text}
+//                                 onPress={() => { this.setModalVisible(false) }}
+//                             >
+//                                 Close
+//                                  </Text>
+//                             <VideoList source={this.state.modalImage} 
+//                              />
+//                         </View>
+
+//                     </Modal> */}
+//                     {this.state.images.map((val, key) => {
+//                         return <View
+//                             style={{ flex: 1 }}
+//                             key={key}
+//                         >
+//                             {/* <TouchableWithoutFeedback> */}
 
 
+//                             <Video 
 
-
-//                 </TouchableWithoutFeedback>
-
-
-//             </View>
+//                                 source={val }
+//                                 style={styles.imgSize}
+//                                 ref={(ref) => {
+//                                     this.player = ref
+//                                   }}
+//                             // onEnterFullscreen={true}
+//                             // showOnStart={false}
+//                             // disableBack={true}
+//                             />
+//                              {/* </TouchableWithoutFeedback> */}
+//                         </View>
+//                     })}
+//                     {/* {images} */}
+//                 {/* </View> */}
+//             </ScrollView>
 //         );
 //     }
 // }
 
-// const styles = StyleSheet.create({
+
+// const styles = StyleSheet.flatten({
+
 //     container: {
 //         flex: 1,
-//         justifyContent: 'center',
-//         alignItems: 'center',
-//         backgroundColor: 'white',
-//     },
-//     fullScreen: {
-//         position: 'absolute',
-//         top: 0,
-//         left: 0,
-//         bottom: 0,
-//         right: 0,
-//     },
-//     playButton: {
-//         position: 'absolute',
-//         bottom: 20,
-//         left: 20,
-//         right: 20,
-//     },
-//     controls: {
-//         backgroundColor: 'white',
-//         opacity: 0.7,
-//         borderRadius: 5,
-//         position: 'absolute',
-//         bottom: 20,
-//         left: 20,
-//         right: 20,
-//     },
-//     progress: {
-//         flex: 1,
 //         flexDirection: 'row',
-//         borderRadius: 3,
-//         overflow: 'hidden',
+//         flexWrap: 'wrap',
+//         backgroundColor: "#000",
 //     },
-//     rateControl: {
+//     imagewrap: {
+//         margin: 2,
+//         padding: 2,
+//         height: height / 4 - 12,
+//         width: width / 3 - 4,
+//         backgroundColor: "#000"
+//     },
+//     modal: {
 //         flex: 1,
-//         flexDirection: 'row',
-//         justifyContent: 'center',
-//     },
-//     playControl: {
-//         flex: 1,
-//         flexDirection: 'row',
-//         justifyContent: 'center',
-//     },
-//     resizeModeControl: {
-//         flex: 1,
-//         flexDirection: 'row',
-//         alignItems: 'center',
-//         justifyContent: 'center',
-//     },
-// });
+//         padding: 20,
+//         backgroundColor: '#000',
+//         height: height / 4 - 12,
+//         width: width
 
+
+
+//     },
+//     text: {
+//         color: "#fff",
+//         fontSize: 25,
+//         fontWeight: "300",
+//     },
+//     imgSize: {
+//         flex: 1,
+//         width: null,
+//         // // // alignSelf: "stretch",
+//         // alignSelf: "stretch"
+//     },
+
+
+// });
 import React, { Component } from 'react';
-import {
-    Platform,
-    StyleSheet,
-    Text,
-    View,
-    TouchableWithoutFeedback,
-    Picker,
-    ToastAndroid,
-    ProgressBarAndroid,
-    ScrollView,
-    WebView,
-    Dimensions
-} from 'react-native';
-import Video from 'react-native-video';
+import { StyleSheet, View, TouchableOpacity, ScrollView, Dimensions, TouchableWithoutFeedback, FlatList, Image, Modal } from 'react-native';
+import { Container, Header, Content, Card, CardItem, Text, Body, Icon, ListItem } from 'native-base';
+import firebase from "react-native-firebase";
+import List from './List'
+// import ImageElement from './ImageElement';
+
+import VideoList from './VideoList'
 const { width, height, scale, fontScale } = Dimensions.get("window");
 
 
-export default class Videos extends Component<Props> {
+
+
+export default class Videos extends Component {
     constructor(props) {
         super(props);
 
         // init state variables
         this.state = {
-            //   rate: 1,
-            //   volume: 1,
-            //   muted: false,
-            //   resizeMode: 'contain',
-            //   duration: 0.0,
-            //   currentTime: 0.0,
-            //   paused: true,
-            //   pickerValueHolder: '1.0',
-            //   pausedText: 'Play',
-            //   hideControls: false,
+            images: [
+                require("../../../../assets/video/video.mp4"),
+                require("../../../../assets/video/video2.mp4"),
+                require("../../../../assets/video/video3.mp4"),
+                require("../../../../assets/video/video4.mp4"),
+                require("../../../../assets/video/video5.mp4"),
+                require("../../../../assets/video/video6.mp4"),
+                require("../../../../assets/video/video7.mp4"),
+                require("../../../../assets/video/video8.mp4"),
+                require("../../../../assets/video/video9.mp4"),
+                require("../../../../assets/video/video10.mp4"),
+                require("../../../../assets/video/video11.mp4"),
+                require("../../../../assets/video/video12.mp4"),
+                require("../../../../assets/video/video13.mp4"),
+                require("../../../../assets/video/video14.mp4"),
+                require("../../../../assets/video/video15.mp4"),
+
+
+            ],
+            modalVisible: false,
+            modalImage: require("../../../../assets/video/video.mp4"),
         };
 
-        // this.video = Video;
     }
 
-    // load video event
-    //   onLoad = (data) => {
-    //     this.setState({ duration: data.duration });
-    //   };
+    setModalVisible(visible, imageKey) {
+        this, this.setState({
+            modalImage: this.state.images[imageKey]
+        })
+        this, this.setState({
+            modalVisible: visible
+        })
+    }
 
-    // video is playing
-    //   onProgress = (data) => {
-    //     this.setState({ currentTime: data.currentTime });
-    //   };
+    getImage() {
+        return this.state.modalImage;
+    }
 
-    // video ends
-    //   onEnd = () => {
-    //     this.setState({ paused: true, pausedText: 'Play'})
-    //     this.video.seek(0);
-    //   };
-
-    //   getCurrentTimePercentage() {
-    //     if (this.state.currentTime > 0) {
-    //       return parseFloat(this.state.currentTime) / parseFloat(this.state.duration);
-    //     }
-    //     return 0;
-    //   };
-
-    //   onChangeRate(itemValue, itemIndex) {
-    //     var rate = parseFloat(itemValue);
-    //     this.setState({pickerValueHolder: itemValue, rate: rate});
-    //   }
-
-    // pressing on 'play' button
-    //   onPressBtnPlay() {
-    //     var pausedText = '';
-    //     if(!this.state.paused){
-    //       pausedText = 'Play';
-
-    //       // always show controls
-    //       if(this.timeoutHandle)
-    //         clearTimeout(this.timeoutHandle);
-    //     }
-    //     else {
-    //       pausedText = 'Pause';
-
-    //       // hide controls after 5s
-    //       this.timeoutHandle = setTimeout(()=>{
-    //         this.setState({hideControls: true});
-    //       }, 5000);
-    //     }
-    //     this.setState({ paused: !this.state.paused, pausedText: pausedText });
-    //   }
-
-    // on press video event
-    //   onPressVideo() {
-    //     // showing controls if they don't show
-    //     if(this.state.hideControls){
-    //       this.setState({hideControls: false});
-    //       this.timeoutHandle = setTimeout(()=>{
-    //         this.setState({hideControls: true});
-    //       }, 8000);
-    //     }
-    //   }
-
-    // parse seconds to time (hour:minute:second)
-    //   parseSecToTime(sec) {
-    //     var sec_num = parseInt(sec, 10); // don't forget the second param
-    //     var hours   = Math.floor(sec_num / 3600);
-    //     var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    //     var seconds = sec_num - (hours * 3600) - (minutes * 60);
-
-    //     if (hours   < 10) {hours   = "0" + hours;}
-    //     if (minutes < 10) {minutes = "0" + minutes;}
-    //     if (seconds < 10) {seconds = "0" + seconds;}
-
-    //     return hours + ':' + minutes + ':' + seconds;
-    //   }
 
     static navigationOptions = ({ navigation }) => {
-                return {
-                    headerTitle: "Videos",
-        
-                    headerTitleStyle: {
-                        color: "#000",
-                        alignSelf: "center",
-                        textAlign: "center",
-                        flex: 1,
-                        marginLeft: -30,
-                        fontSize:width/23,
-                        
-                    },
-                    headerStyle: { backgroundColor: "#fff" 
-                    ,
-                    fontFamily: "OpenSans-Semi"}
-                };
-                headerRight: <View />;
-            };
+        return {
+            headerTitle: "GALLERY",
+
+            headerTitleStyle: {
+                color: "#000",
+                alignSelf: "center",
+                textAlign: "center",
+                flex: 1,
+                marginLeft: -30,
+                fontSize: width / 23,
+            },
+            headerStyle: {
+                backgroundColor: "#fff",
+
+                fontFamily: "OpenSans-Semi"
+            }
+        };
+
+    };
+
+
+
+
     render() {
-        // const flexCompleted = this.getCurrentTimePercentage() * 100;
 
+        let images = this.state.images.map((val, key) => {
+            return <TouchableWithoutFeedback
+                key={key}
+                onPress={() => { this.setModalVisible(true, key) }}
+            >
+                <View style={styles.imagewrap}>
+                    <VideoList source={val} />
+                </View>
+            </TouchableWithoutFeedback>
+
+
+        })
         return (
-               
-           
+            <ScrollView>
 
-                <WebView
-                    // style={styles.WebViewContainer}
-                    // style={{marginTop: 20}}
-                    javaScriptEnabled={true}
-                    domStorageEnabled={true}
-                    source={{ uri: 'https://www.facebook.com/hairdesignsbymaggie/videos/' }}
-                />
-                
-               
-               
-          
-          
-            // <ScrollView>
+                <View style={styles.container}>
 
+                    <Modal style={styles.modal} animationType={'fade'}
+                        transparent={true} visible={this.state.modalVisible}
+                        onRequestClose={() => { }}>
 
-            //   <View style={styles.container}>
-            //     <TouchableWithoutFeedback
-            //       style={styles.fullScreen}
-            //       onPress={() => this.onPressVideo()}>
-            //       <Video
-            //         ref={(ref) => { this.video = ref }}
-            //         /* For ExoPlayer */
-            //         source={{ uri: 'https://youtu.be/v2Hz4f9JA6k?t=5.mp3' }} 
-            //         // source={require('./videos/tom_and_jerry_31.mp4')}
-            //         style={styles.fullScreen}
-            //         rate={this.state.rate}
-            //         paused={this.state.paused}
-            //         volume={this.state.volume}
-            //         muted={this.state.muted}
-            //         resizeMode={this.state.resizeMode}
-            //         onLoad={this.onLoad}
-            //         onProgress={this.onProgress}
-            //         onEnd={this.onEnd}
-            //         onAudioBecomingNoisy={this.onAudioBecomingNoisy}
-            //         onAudioFocusChanged={this.onAudioFocusChanged}
-            //         repeat={false}
-            //       />
-            //     </TouchableWithoutFeedback>
-            //     {
-            //       !this.state.hideControls ?
-            //       (
-            //         <View style={styles.controls}>
-            //           <View style={styles.generalControls}>
-            //             <View style={styles.rateControl}>
-            //               <Picker
-            //                 style={{width: 110}}
-            //                 selectedValue={this.state.pickerValueHolder}
-            //                 onValueChange={(itemValue, itemIndex) => this.onChangeRate(itemValue, itemIndex)} >
-            //                 <Picker.Item label="x1.5" value="1.5"/>
-            //                 <Picker.Item label="x1.25" value="1.25"/>
-            //                 <Picker.Item label="x1.0" value="1.0"/>
-            //                 <Picker.Item label="x0.75" value="0.75"/>
-            //                 <Picker.Item label="x0.5" value="0.5"/>
-            //               </Picker>
-            //             </View>
-            //             <View style={styles.playControl}>
-            //               <Text onPress={() => this.onPressBtnPlay()}>{this.state.pausedText}</Text>
-            //             </View>
-            //             <View style={styles.resizeModeControl}>
-            //               <Picker
-            //                 style={{width: 150}}
-            //                 selectedValue={this.state.resizeMode}
-            //                 onValueChange={(itemValue, itemIndex) => this.setState({resizeMode: itemValue})} >
-            //                 <Picker.Item label="none" value="none"/>
-            //                 <Picker.Item label="cover" value="cover"/>
-            //                 <Picker.Item label="stretch" value="stretch"/>
-            //                 <Picker.Item label="contain" value="contain"/>
-            //               </Picker>
-            //             </View>
-            //           </View>
+                        <View style={styles.modal}>
+                            <Text style={styles.text}
+                                onPress={() => { this.setModalVisible(false) }}
+                            >
+                                Close
+                                 </Text>
+                            <VideoList source={this.state.modalImage} />
+                        </View>
 
-            //           <View style={styles.trackingControls}>
-            //             <ProgressBarAndroid
-            //               style={styles.progress}
-            //               styleAttr="Horizontal"
-            //               indeterminate={false}
-            //               progress={this.getCurrentTimePercentage()}
-            //             />
-            //             <Text>{this.parseSecToTime(parseInt(this.state.currentTime))}/{this.parseSecToTime(parseInt(this.state.duration))}</Text>
-            //           </View>
-            //         </View>
-            //       ) : (null)
-            //     }
-
-
-            //   </View>
+                    </Modal>
+                    {images}
+                </View>
+            </ScrollView>
 
 
         );
     }
 }
 
+const styles = StyleSheet.flatten({
 
-const styles = StyleSheet.create({
- 
-WebViewContainer: {
- 
-    marginTop: (Platform.OS == 'ios') ? 20 : 0,
-    height:"100%"
-    
- 
-  }
-  
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        backgroundColor: "#000",
+
+    },
+    imagewrap: {
+        // margin: 2,
+        // padding: 2,
+        height: height / 4 - 12,
+        width: width /  2- 4,
+        backgroundColor: "#000"
+    },
+    modal: {
+        flex: 1,
+        padding: 20,
+        backgroundColor: '#000',
+        // height: height / 4 - 12,
+        // width: width
+
+
+
+    },
+    text: {
+        color: "#fff",
+        fontSize: 25,
+        fontWeight: "300",
+    }
+
+
 });
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: 'black',
-//   },
-//   fullScreen: {
-//     position: 'absolute',
-//     top: 0,
-//     left: 0,
-//     bottom: 0,
-//     right: 0,
-//   },
-//   playButton: {
-//     position: 'absolute',
-//     bottom: 20,
-//     left: 20,
-//     right: 20,
-//   },
-//   controls: {
-//     backgroundColor: 'white',
-//     opacity: 0.7,
-//     borderRadius: 5,
-//     position: 'absolute',
-//     bottom: 20,
-//     left: 20,
-//     right: 20,
-//   },
-//   progress: {
-//     flex: 1,
-//     flexDirection: 'row',
-//     borderRadius: 3,
-//     overflow: 'hidden',
-//   },
-//   rateControl: {
-//     flex: 1,
-//     flexDirection: 'row',
-//     justifyContent: 'center',
-//   },
-//   playControl: {
-//     flex: 1,
-//     flexDirection: 'row',
-//     justifyContent: 'center',
-//   },
-//   resizeModeControl: {
-//     flex: 1,
-//     flexDirection: 'row',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });

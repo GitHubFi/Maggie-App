@@ -81,12 +81,13 @@ export default class Services extends Component {
                     <Text style={{
                         color: '#fff',
                         // justifyContent:"flex-start",
-                        textAlign:"justify",
+                        textAlign:"left",
                         lineHeight:30,
                         fontSize: 20,
                         paddingTop: 5,
                         paddingBottom: 40,
                         fontFamily: " OpenSans-Regular",
+                        width: "85%"
 
                     }}>From wonderful falling curls to a chic and elegant up-do for your wedding, Maggie’s vast experience and artistry can be seen in every custom hair style that she does.
                             </Text>
@@ -112,10 +113,11 @@ export default class Services extends Component {
                         fontFamily: " OpenSans-Regular",
                         // justifyContent:"flex-start",
                         lineHeight:30,
-                        textAlign:"justify",
+                        textAlign:"left",
                         fontSize: 20,
                         paddingTop: 5,
                         paddingBottom: 40,
+                        width: "85%"
                       
                     }}>Maggie is specializing in all styles of updo’s whether it’s simple airwave with flawless finish, beautiful bun, pinup pompadour, chic-chignon, retro pin curls or elegant twist.
                             </Text>
@@ -141,10 +143,11 @@ export default class Services extends Component {
                         fontFamily: " OpenSans-Regular",
                         // justifyContent:"flex-start",
                         lineHeight:30,
-                        textAlign:"justify",
+                        textAlign:"left",
                         fontSize: 20,
                         paddingTop: 5,
                         paddingBottom: 40,
+                        width: "85%"
                       
                     }}>Prefer to keep your hair down? she got you! Wavy, Curly, tousled, half up half down or messy braid look to suit your style.
                             </Text>
@@ -169,10 +172,11 @@ export default class Services extends Component {
                         fontFamily: " OpenSans-Regular",
                         lineHeight:30,
                         // justifyContent:"flex-start",
-                        textAlign:"justify",
+                        textAlign:"left",
                         fontSize: 20,
                         paddingTop: 5,
                         paddingBottom: 40,
+                        width: "90%"
                         
                     }}>Starting from a smooth sleek curls or beach waves to tight precise blowouts, the range is exquisite. Sleek and classy, curly hair and curly hair gone straight, Maggie customizes the look according to your cut and hair length.
                             </Text>
@@ -197,10 +201,11 @@ export default class Services extends Component {
                         fontFamily: " OpenSans-Regular",
                         // justifyContent:"flex-start",
                         lineHeight:30,
-                        textAlign:"justify",
+                        textAlign:"center",
                         fontSize: 20,
                         paddingTop: 5,
                         paddingBottom: 40,
+                        width: "90%"
                       
                     }}>While being an expert at hair designs, she also provides complete professional makeup services from sophisticated no makeup to full on glam look to create your perfect look and bringing out your best for your special occasion or event.
                             </Text>
@@ -224,11 +229,12 @@ export default class Services extends Component {
                         color: '#fff',
                         fontFamily: " OpenSans-Regular",
                         // justifyContent:"flex-start",
-                        textAlign:"justify",
+                        textAlign:"left",
                         fontSize: 20,
                         paddingTop: 5,
                         paddingBottom: 40,
                         lineHeight:30,
+                        width: "90%"
                        
                     }}>Treatments (Get some food for your hair with her state of the art keratin and smoothing hair treatment. The range of keratin treatment is dynamic including Keratin Complex Smoothing Therapy, Global Keratin Complex, the La-Brazilian treatment, and Brazilian Keratin Treatment. Frizzy and rough textured hair is no more your problem
                             </Text>
@@ -252,11 +258,13 @@ export default class Services extends Component {
                         color: '#fff',
                         fontFamily: " OpenSans-Regular",
                         // justifyContent:"flex-start",
-                        textAlign:"justify",
+                        // justifyContent:"center",
+                        textAlign:"left",
                         fontSize: 20,
                         paddingTop: 5,
                         paddingBottom: 40,
                         lineHeight:30,
+                        width: "95%"
                        
                     }}>She also provide an expert consultation which is a complimentary visit with a hair stylist to discuss the customized and desired style. A quote will be given at that time.
                             </Text>

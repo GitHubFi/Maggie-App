@@ -110,7 +110,7 @@ reset = route => {
 
         <Image
           style={{ width: width, height: height, resizeMode: "cover" }}
-          source={require("../../../assets/maggie/splash2.png")}
+          source={require("../../../assets/maggie/splash-image.jpg")}
           
         />
       </View>
