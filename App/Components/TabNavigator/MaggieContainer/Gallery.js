@@ -17,26 +17,28 @@ export default class Gallery extends Component {
 
             modalVisible: false,
             images: [
-                require("../../../../assets/maggie/gallery/first1.jpg"),
-                require("../../../../assets/maggie/gallery/first.jpg"),
+               
+                // require("../../../../assets/maggie/gallery/first.jpg"),
                 require("../../../../assets/maggie/gallery/first2.jpg"),
                 require("../../../../assets/maggie/gallery/first3.jpg"),
                 require("../../../../assets/maggie/gallery/first4.jpg"),
                 require("../../../../assets/maggie/gallery/first5.jpg"),
                 require("../../../../assets/maggie/gallery/first6.jpg"),
-                require("../../../../assets/maggie/gallery/g3.jpg"),
-                require("../../../../assets/maggie/gallery/g5.jpg"),
-
+                
                 require("../../../../assets/maggie/gallery/first8.jpg"),
-                require("../../../../assets/maggie/gallery/first9.jpg"),
                 require("../../../../assets/maggie/gallery/first10.jpg"),
-                require("../../../../assets/maggie/gallery/first11.jpg"),
                 require("../../../../assets/maggie/gallery/first12.jpg"),
                 require("../../../../assets/maggie/gallery/first13.jpg"),
                 require("../../../../assets/maggie/gallery/first14.jpg"),
-                require("../../../../assets/maggie/gallery/first15.jpg"),
+                require("../../../../assets/maggie/gallery/first9.jpg"),
+                require("../../../../assets/maggie/gallery/first11.jpg"),
+                require("../../../../assets/maggie/gallery/g3.jpg"),
+                require("../../../../assets/maggie/gallery/g5.jpg"),
+                require("../../../../assets/maggie/gallery/first1.png"),
+                // require("../../../../assets/maggie/gallery/first15.jpg"),
+                // require("../../../../assets/maggie/gallery/second.png"),
             ],
-            modalImage: require("../../../../assets/maggie/gallery/first1.jpg"),
+            modalImage: require("../../../../assets/maggie/gallery/first2.jpg"),
 
             columns: 2
         };
@@ -88,7 +90,7 @@ export default class Gallery extends Component {
                 onPress={() => { this.setModalVisible(true, key) }}
             >
                 <View style={styles.imagewrap}>
-                    <ImageElement imgsource={val} />
+                    <ImageElement imgsource={val}  thumbnail={this.state.images[key]}/>
                 </View>
             </TouchableWithoutFeedback>
 
@@ -109,7 +111,7 @@ export default class Gallery extends Component {
                             >
                                 Close
                                  </Text>
-                            <ImageElement imgsource={this.state.modalImage} />
+                            <ImageElement imgsource={this.state.modalImage}  />
                         </View>
 
                     </Modal>
@@ -135,7 +137,10 @@ const styles = StyleSheet.flatten({
         padding: 2,
         height: height / 4 - 12,
         width: width / 3 - 4,
-        backgroundColor: "#000"
+        backgroundColor: "#000",
+        // resizeMode:"cover"
+        
+        
     },
     modal: {
         flex: 1,

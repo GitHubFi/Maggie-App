@@ -312,7 +312,7 @@ class BookAppointment extends Component {
 
 
             <ImageBackground source={require("../../../../assets/maggie/Screenshot_8.jpg")}
-                blurRadius={Platform.OS == 'ios' ? 1 : 1}
+                // blurRadius={Platform.OS == 'ios' ? 1 : 1}
                 style={{ width: '100%', height: '100%' }}>
                 <ScrollView >
 
@@ -556,33 +556,39 @@ class BookAppointment extends Component {
                                     <Input style={{ color: "#000" }} type="text" keyboardType={"numeric"} onChangeText={number => this.setState({ number })} />
                                 </ListItem>
                                 <ListItem style={{
-                                    paddingRight: 20,
-                                    justifyContent: "flex-end",
-                                    alignContent: "flex-start",
-                                    alignSelf: "flex-start"
+                                    
+                                    
+                                    // backgroundColor:"red",
+                                    // marginRight:5
+
+                                    // paddingRight:40
+                                    // paddingRight: 30,
+                                    // justifyContent: "flex-start",
+                                    // alignContent: "flex-start",
+                                    // alignSelf: "flex-start"
                                 }}>
 
                                     {/* <Text style={{ color: "#fff" }}> </Text> */}
 
                                     <DatePicker
-                                        defaultDate={new Date(2019, 6, 1)}
-                                        minimumDate={new Date(2018, 1, 1)}
-                                        maximumDate={new Date(2050, 12, 31)}
+                                        minimumDate={new Date(2015, 1,1)}
+                                        defaultDate={new Date}
+                                        maximumDate={new Date(2080, 12, 31)}
                                         locale={"en"}
                                         timeZoneOffsetInMinutes={undefined}
                                         modalTransparent={false}
                                         animationType={"fade"}
-                                        androidMode={"default"}
+                                        androidMode={"spinner"}
                                         placeHolderText="SELECT DATE : "
                                         textStyle={{
                                             color: "#000", fontSize: 20, justifyContent: "flex-start",
-                                            fontFamily: " OpenSans-Regular",
+                                            fontFamily: " OpenSans-Regular", 
                                         }}
-                                        placeHolderTextStyle={{ color: "#000", fontSize: 16,paddingRight:20 }}
+                                        placeHolderTextStyle={{ color: "#000", fontSize: 16,marginLeft:-10,  }}
                                         onDateChange={this.setDate}
                                         disabled={false}
                                     />
-                                    <Text style={{ color: "#000", fontSize: 17 }}>
+                                    <Text style={{ color: "#000", fontSize: 17, marginLeft:-10, }}>
                                         Date: {this.state.chosenDate.toString().substr(4, 12)}
                                     </Text>
                                 </ListItem>

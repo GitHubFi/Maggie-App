@@ -220,20 +220,28 @@ export default class Videos extends Component {
 
 
             ],
+
+            key: null,
             modalVisible: false,
             modalImage: require("../../../../assets/video/video.mp4"),
+           
+
         };
 
     }
 
     setModalVisible(visible, imageKey) {
         this, this.setState({
-            modalImage: this.state.images[imageKey]
+            modalImage: this.state.images[imageKey],
+
+
         })
         this, this.setState({
-            modalVisible: visible
+            modalVisible: visible,
+            // key: this.state.modalImage,
         })
     }
+
 
     getImage() {
         return this.state.modalImage;
@@ -242,7 +250,7 @@ export default class Videos extends Component {
 
     static navigationOptions = ({ navigation }) => {
         return {
-            headerTitle: "GALLERY",
+            headerTitle: "VIDEOS",
 
             headerTitleStyle: {
                 color: "#000",
@@ -278,13 +286,16 @@ export default class Videos extends Component {
 
 
         })
+
         return (
             <ScrollView>
 
                 <View style={styles.container}>
 
-                    <Modal style={styles.modal} animationType={'fade'}
-                        transparent={true} visible={this.state.modalVisible}
+                    <Modal style={styles.modal}
+                        animationType={'fade'}
+                        transparent={true}
+                        visible={this.state.modalVisible}
                         onRequestClose={() => { }}>
 
                         <View style={styles.modal}>
@@ -293,7 +304,7 @@ export default class Videos extends Component {
                             >
                                 Close
                                  </Text>
-                            <VideoList source={this.state.modalImage} />
+                            <VideoList  source={this.state.modalImage}/>
                         </View>
 
                     </Modal>
@@ -319,7 +330,7 @@ const styles = StyleSheet.flatten({
         // margin: 2,
         // padding: 2,
         height: height / 4 - 12,
-        width: width /  2- 4,
+        width: width / 2 - 4,
         backgroundColor: "#000"
     },
     modal: {

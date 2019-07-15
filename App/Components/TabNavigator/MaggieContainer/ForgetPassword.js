@@ -105,7 +105,7 @@ export default class ForgetPassword extends Component {
           <View>
 
             <ImageBackground source={require("../../../../assets/maggie/Screenshot_8.jpg")}
-              blurRadius={Platform.OS == 'ios' ? 1 : 2}
+              // blurRadius={Platform.OS == 'ios' ? 1 : 2}
               style={{ width: '100%', height: '100%' }}>
               <View
                 style={{
@@ -145,6 +145,7 @@ export default class ForgetPassword extends Component {
                       //   borderBottomWidth: 1,
                       fontSize: 15,
                     }}
+                    autoCapitalize = 'none'
                     onChangeText={email => this.setState({ email })}></Input>
                   {/* </Item>
     

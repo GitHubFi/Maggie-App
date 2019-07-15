@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
     Text, StyleSheet, View, Image,
-    Dimensions, ScrollView, TouchableWithoutFeedback
+    Dimensions, ScrollView, TouchableWithoutFeedback, TouchableOpacity
 } from 'react-native';
 const { width, height, scale, fontScale } = Dimensions.get("window");
 import VideoPlayer from 'react-native-video-player';
@@ -9,7 +9,7 @@ import VideoPlayer from 'react-native-video-player';
 // import Video from 'react-native-video'
 import { database } from 'react-native-firebase';
 
-// import Video from 'react-native-af-video-player'
+
 export default class VideoList extends Component {
     constructor(props) {
         super(props);
@@ -19,21 +19,50 @@ export default class VideoList extends Component {
             volume: 1,
             muted: false,
             resizeMode: 'conatin',
-            duration: 0.0,
+            duration: 0.1,
             currentTime: 0.0,
             paused: true,
             rateText: '1.0',
             pausedText: 'Play',
             hidenControls: false,
-            show: false
+            show: false,
+            data: [
+                require("../../../../assets/maggie/gallery/first1.png"),
+                require("../../../../assets/maggie/gallery/first2.jpg"),
+                require("../../../../assets/maggie/gallery/first3.jpg"),
+                require("../../../../assets/maggie/gallery/first4.jpg"),
+                require("../../../../assets/maggie/gallery/first5.jpg"),
+                require("../../../../assets/maggie/gallery/first6.jpg"),
+                require("../../../../assets/maggie/gallery/first8.jpg"),
+                require("../../../../assets/maggie/gallery/first10.jpg"),
+                require("../../../../assets/maggie/gallery/first12.jpg"),
+                require("../../../../assets/maggie/gallery/first13.jpg"),
+                require("../../../../assets/maggie/gallery/first14.jpg"),
+                require("../../../../assets/maggie/gallery/first9.jpg"),
+                require("../../../../assets/maggie/gallery/first11.jpg"),
+                require("../../../../assets/maggie/gallery/g3.jpg"),
+                require("../../../../assets/maggie/gallery/g5.jpg"),
+
+
+            ],
+            thumbnail: require("../../../../assets/maggie/gallery/first1.png"),
 
 
 
         }
     }
 
+    thumbnail(val, key) {
+        this, this.setState({
+            // modalImage: this.state.images[imageKey],
+            thumbnail: this.state.data[val]
+
+        })
+
+    }
+
     onLoad = (data) => {
-        //set duration
+
         this.setState({
             duration: data.duration,
         })
@@ -42,63 +71,41 @@ export default class VideoList extends Component {
     onPress = (data) => {
         this.setState({ currentTime: data.currentTime });
     }
-
-
-    // onEnd = () => {
-    //     this.setState({ pausedText: 'Play', paused: true })
-    //     this.video.seeek(0);
-    // }
-
-
-
     render() {
+        let data = this.state.data.map((val, key) => {
+            return <TouchableWithoutFeedback
+                key={key}
+                onPress={() => { this.thumbnail(val, key) }}
+            >
 
 
+            </TouchableWithoutFeedback>
+
+
+        })
         return (
-
-            // <View style={styles.container}>
-
-
-
-            //     <VideoPlayer
-            //         source={this.props.imgsource}
-            //         style={styles.imgSize}
-            //     />
-
-            // </View>
-
             <View style={styles.container}>
-
-
-
-
-
                 <VideoPlayer
-
                     video={this.props.source}
-                    // repeat={this.state.repeat}
-                    // rate={this.state.rate}
-                    // volume={this.state.volume}
-                    // muted={this.state.muted}
-                    // resizeMode={this.state.resizeMode}
-                    // paused={this.state.paused}
-                    // onLoad={this.onLoad}
-                    // onProgress={this.onPress}
+                    thumbnail={this.props.source[this.state.thumbnail]}
 
-                    autoplay={false}
-                    // videoWidth={30}
-                    // toggleResizeModeOnFullscreen={fales}
-                    // onEnd={this.onEnd}
-                    style={styles.imgSize}
-                    // videoWidth={100}
-                    // videoHeight={100}
+                 
                     defaultMuted
-                    autoplay
-                    disableFullscreen
-                    // fullScreenOnLongPress
+                  
+                    // disableControlsAutoHide
+                    
+                  
+                    autoplay={true}
+                  
+                    style={styles.imgSize}
+                 
+                    resizeMode={"contain"}
+
+                // fullScreenOnLongPress
 
 
                 />
+
 
 
             </View>
@@ -111,11 +118,13 @@ export default class VideoList extends Component {
 const styles = StyleSheet.flatten({
     imgSize: {
         flex: 1,
-        // width: null,
+        
+        //  width: null,
+        //  height:null,
         // // // // alignSelf: "stretch",
         // alignSelf: "stretch"
         // height: height / 4 - 12,
-        // width: width / 3 - 4,
+
     },
     container: {
         flex: 1,

@@ -118,7 +118,7 @@ class SignIn extends Component {
           <View style={{ height: height }}>
 
             <ImageBackground source={require("../../../assets/maggie/Screenshot_8.jpg")}
-              blurRadius={Platform.OS == 'ios' ? 1 : 2}
+              // blurRadius={Platform.OS == 'ios' ? 1 : 2}
               style={{ width: '100%', height: height }}>
               <View
                 style={{
@@ -158,6 +158,7 @@ class SignIn extends Component {
                       borderBottomWidth: 1,
                       fontSize: 15,
                     }}
+                    autoCapitalize = 'none'
                     onChangeText={email => this.setState({ email })}></Input>
                   {/* </Item>
 
@@ -171,6 +172,7 @@ class SignIn extends Component {
                       fontWeight: "200",
                       padding: 8
                     }}
+                    autoCapitalize = 'none'
                     onChangeText={password => this.setState({ password })}
                   ></Input>
 

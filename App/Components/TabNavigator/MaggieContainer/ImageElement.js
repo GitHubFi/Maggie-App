@@ -12,7 +12,7 @@ export default class ImageElement extends Component {
         return (
 
 
-            <Image source={this.props.imgsource} style={styles.imgSize}></Image>
+            <Image  resizeMode="contain" source={this.props.imgsource} style={styles.imgSize}></Image>
 
         );
     }
@@ -22,7 +22,8 @@ const styles = StyleSheet.flatten({
     imgSize: {
         flex: 1,
         width: null,
-        // // // alignSelf: "stretch",
+        
+    //  alignSelf: "stretch",
         // alignSelf: "stretch"
     }
 

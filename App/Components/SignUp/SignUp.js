@@ -108,29 +108,29 @@ class SignUp extends Component {
       <View
         style={{
           flex: 1,
-          height:height
+          height: height
           // padding: width / 20,
           // justifyContent: "space-around"
         }}
       >
 
         <View
-         style={{
-          // flex: 1,
-          height:height
-          // padding: width / 20,
-          // justifyContent: "space-around"
-        }}>
+          style={{
+            // flex: 1,
+            height: height
+            // padding: width / 20,
+            // justifyContent: "space-around"
+          }}>
 
           <ImageBackground source={require("../../../assets/maggie/Screenshot_8.jpg")}
-            blurRadius={Platform.OS == 'ios' ? 1 : 2}
+            // blurRadius={Platform.OS == 'ios' ? 1 : 2}
             style={{ width: '100%', height: '100%' }}>
             <View
               style={{
                 flex: 1,
                 justifyContent: "center",
                 alignItems: "center",
-                height:'100%'
+                height: '100%'
               }}>
               <View style={{ width: width / 2 }}>
                 <Image
@@ -169,7 +169,7 @@ class SignUp extends Component {
                     borderBottomWidth: 1,
                     fontSize: 15,
                   }}
-
+                  autoCapitalize='none'
                   onChangeText={firstname => this.setState({ firstname })}>
                   {/* <Icon active name="person" /> */}
                 </Input>
@@ -182,6 +182,7 @@ class SignUp extends Component {
                     borderBottomWidth: 1,
                     fontSize: 15,
                   }}
+                  autoCapitalize='none'
                   onChangeText={lastname => this.setState({ lastname })}>
                 </Input>
                 <Input type="text" keyboardType={"email-address"} placeholder={"Email Address"} placeholder="Email Address"
@@ -194,6 +195,7 @@ class SignUp extends Component {
                     borderBottomWidth: 1,
                     fontSize: 15,
                   }}
+                  autoCapitalize='none'
                   onChangeText={email => this.setState({ email })}>
                 </Input>
                 <Input type="number" placeholder="Mobile Number" keyboardType="numeric"
@@ -217,6 +219,7 @@ class SignUp extends Component {
                     borderBottomWidth: 1,
                     fontSize: 15,
                   }}
+                  autoCapitalize='none'
                   onChangeText={password => this.setState({ password })}>
                 </Input>
                 {/* <Entypo name={"lock"} size={25} color="#24516e" /> */}
@@ -226,11 +229,9 @@ class SignUp extends Component {
                     fontWeight: "200",
                     padding: 8,
                     fontSize: 15,
-
-
                     borderBottomColor: '#dcdedf',
-
                   }}
+                  autoCapitalize = 'none'
                   onChangeText={confirmPassword => this.setState({ confirmPassword })}
                 ></Input>
 
@@ -291,8 +292,8 @@ class SignUp extends Component {
 
               <View style={{
 
-                height:height/10,
-                paddingTop:20
+                height: height / 10,
+                paddingTop: 20
 
 
               }}>

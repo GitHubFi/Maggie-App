@@ -54,7 +54,7 @@ export default class Classes extends Component {
         return (
 
             <ImageBackground source={require("../../../../assets/maggie/Screenshot_8.jpg")}
-                blurRadius={Platform.OS == 'ios' ? 1 : 3}
+                // blurRadius={Platform.OS == 'ios' ? 1 : 3}
                 style={{ width: '100%', height: '100%' }}>
                 <ScrollView >
 
@@ -194,13 +194,15 @@ export default class Classes extends Component {
                                     fontSize: 20,
                                     paddingTop: 5,
                                     paddingBottom: 5,
+                                    paddingBottom: 15,
                                    
                                   
 
                             
 
                                 }}
-                                >If you interested for more details, please fill the form below and I will get back at the soonest:</Text>
+                                >If you interested for more details, please fill the form below and I will get back at the soonest:
+                                </Text>
 
                                
 
@@ -243,10 +245,10 @@ export default class Classes extends Component {
                                     />
 
                                 </ListItem> */}
-                                <View style={{
+                <View style={{
                 width: "95%",
                 height: height / 2.5,
-                backgroundColor: "#dcdedf",
+                backgroundColor: "#f2f2f2",
                 opacity: 0.9,
                 padding: 10
 
@@ -257,24 +259,26 @@ export default class Classes extends Component {
 
                   style={{
                     color: "#000",
-                    fontWeight: "200",
+                    fontWeight: "300",
+                    fontFamily: "OpenSans-SemiBold",
                     padding: 8,
-                    borderBottomColor: 'white',
+                    borderBottomColor: '#fff',
                     borderBottomWidth: 1,
-                    fontSize: 15,
+                    fontSize: 17,
                   }}
-
+                  
                   onChangeText={firstname => this.setState({ firstname })}>
                   {/* <Icon active name="person" /> */}
                 </Input>
                 <Input type="text" placeholder="Enter Your Email"
                   style={{
                     color: "#000",
-                    fontWeight: "200",
+                    fontWeight: "300",
+                    fontFamily: "OpenSans-SemiBold",
                     padding: 8,
-                    borderBottomColor: 'white',
+                    borderBottomColor: '#fff',
                     borderBottomWidth: 1,
-                    fontSize: 15,
+                    fontSize: 17,
                   }}
                   onChangeText={lastname => this.setState({ lastname })}>
                 </Input>
@@ -282,20 +286,29 @@ export default class Classes extends Component {
                 <Input type="number" placeholder="Enter Mobile No." keyboardType="numeric"
                   style={{
                     color: "#000",
-                    fontWeight: "200",
+                    fontWeight: "300",
                     padding: 8,
-                    borderBottomColor: 'white',
+                    borderBottomColor: '#fff',
                     borderBottomWidth: 1,
-                    fontSize: 15,
+                    fontFamily: "OpenSans-SemiBold",
+                    fontSize: 17,
                   }}
                   onChangeText={mobilenumber => this.setState({ mobilenumber })}>
                 </Input>
 
                
                 {/* <Entypo name={"lock"} size={25} color="#24516e" /> */}
-                <Textarea rowSpan={5} bordered placeholder="Write Here"
-                                        style={{ color: "#000", width: "100%" ,  fontFamily: " OpenSans-Regular",
-                                        fontSize: 15,}}
+                <Textarea keyboardType="email-address" rowSpan={5} bordered placeholder="Write Here"
+                                        style={{ color: "#000", width: "100%" ,fontWeight: "300",
+                                        fontFamily: "OpenSans-SemiBold",
+                                        fontSize: 17,
+                                        borderColor: '#fff',
+                                         borderBottomWidth: 1,
+                                        borderTopWidth:1,
+                                        borderLeftWidth:1,
+                                        borderRightWidth:1,
+                                    
+                                    }}
                                         onChangeText={note => this.setState({ note })}
                                     />
 
@@ -322,7 +335,7 @@ export default class Classes extends Component {
                                 // onPress={this.handleEmail}
                                 >
 
-                                <Text style={{ color: "#000" }}> Sign Up </Text>
+                                <Text style={{ color: "#000", fontFamily: " OpenSans-Regular", }}> Sign Up </Text>
                             </Button>
                             </View>
 
@@ -351,55 +364,19 @@ export default class Classes extends Component {
                                    fontSize: 25,
                                    textAlign: "left",
                                
-                                   paddingTop: 25,
-                                   paddingBottom: 0,
+                                   paddingTop: 15,
+                                   paddingBottom: 20,
 
                                 }}
                                 >Group Courses available as well
     
                            </Text>
                                
-                           {/* <ListItem>
-
-<Text style={{ color: "#fff",  fontFamily: " OpenSans-Regular",
-fontSize: 20, }}>NAME </Text>
-
-<Input style={{ color: "#fff" }} type="text" onChangeText={name => this.setState({ name })} />
-</ListItem>
-<ListItem>
-
-<Text style={{ color: "#fff" ,  fontFamily: " OpenSans-Regular",
-fontSize: 20,}}>EMAIL</Text>
-
-<Input style={{ color: "#fff",  fontFamily: " OpenSans-Regular",
-fontSize: 20, }} type="text" keyboardType={"email-address"} onChangeText={email => this.setState({ email })} />
-</ListItem>
-<ListItem>
-
-<Text style={{ color: "#fff",  fontFamily: " OpenSans-Regular",
-fontSize: 20, }}>MOBILE No.</Text>
-
-<Input style={{ color: "#fff",  fontFamily: " OpenSans-Regular",
-fontSize: 20, }} type="text" keyboardType={"numeric"} onChangeText={number => this.setState({ number })} />
-</ListItem>
-
-
-
-<Text style={{ color: "#fff", paddingLeft: 20,paddingTop:20,  fontFamily: " OpenSans-Regular",
-fontSize: 20,}}>NOTE :</Text>
-<ListItem>
-
-<Textarea rowSpan={5} bordered placeholder="WRITE HERE"
-    style={{ color: "#fff", width: "100%" ,  fontFamily: " OpenSans-Regular",
-    fontSize: 15,}}
-    onChangeText={note => this.setState({ note })}
-/>
-
-</ListItem> */}
-<View style={{
+                           
+                <View style={{
                 width: "95%",
                 height: height / 2.5,
-                backgroundColor: "#dcdedf",
+                backgroundColor: "#f2f2f2",
                 opacity: 0.9,
                 padding: 10
 
@@ -409,12 +386,19 @@ fontSize: 20,}}>NOTE :</Text>
                 <Input type="text" placeholder="Enter Your Name"
 
                   style={{
+                    // color: "#000",
+                    // fontWeight: "200",
+                    // padding: 8,
+                    // borderBottomColor: 'white',
+                    // borderBottomWidth: 1,
+                    // fontSize: 15,
                     color: "#000",
-                    fontWeight: "200",
+                    fontWeight: "300",
+                    fontFamily: "OpenSans-SemiBold",
                     padding: 8,
-                    borderBottomColor: 'white',
+                    borderBottomColor: '#fff',
                     borderBottomWidth: 1,
-                    fontSize: 15,
+                    fontSize: 17,
                   }}
 
                   onChangeText={firstname => this.setState({ firstname })}>
@@ -423,11 +407,12 @@ fontSize: 20,}}>NOTE :</Text>
                 <Input type="text" placeholder="Enter Your Email"
                   style={{
                     color: "#000",
-                    fontWeight: "200",
+                    fontWeight: "300",
+                    fontFamily: "OpenSans-SemiBold",
                     padding: 8,
-                    borderBottomColor: 'white',
+                    borderBottomColor: '#fff',
                     borderBottomWidth: 1,
-                    fontSize: 15,
+                    fontSize: 17,
                   }}
                   onChangeText={lastname => this.setState({ lastname })}>
                 </Input>
@@ -435,11 +420,12 @@ fontSize: 20,}}>NOTE :</Text>
                 <Input type="number" placeholder="Enter Mobile No." keyboardType="numeric"
                   style={{
                     color: "#000",
-                    fontWeight: "200",
+                    fontWeight: "300",
+                    fontFamily: "OpenSans-SemiBold",
                     padding: 8,
-                    borderBottomColor: 'white',
+                    borderBottomColor: '#fff',
                     borderBottomWidth: 1,
-                    fontSize: 15,
+                    fontSize: 17,
                   }}
                   onChangeText={mobilenumber => this.setState({ mobilenumber })}>
                 </Input>
@@ -447,8 +433,14 @@ fontSize: 20,}}>NOTE :</Text>
                
                 {/* <Entypo name={"lock"} size={25} color="#24516e" /> */}
                 <Textarea rowSpan={5} bordered placeholder="Write Here"
-                                        style={{ color: "#000", width: "100%" ,  fontFamily: " OpenSans-Regular",
-                                        fontSize: 15,}}
+                                         style={{ color: "#000", width: "100%" ,fontWeight: "300",
+                                         fontFamily: "OpenSans-SemiBold",  
+                                          borderColor: '#fff',
+                                         borderBottomWidth: 1,
+                                        borderTopWidth:1,
+                                        borderLeftWidth:1,
+                                        borderRightWidth:1,
+                                         fontSize: 17,}}
                                         onChangeText={note => this.setState({ note })}
                                     />
 
@@ -475,7 +467,7 @@ fontSize: 20,}}>NOTE :</Text>
                                 // onPress={this.handleEmail}
                                 >
 
-                                <Text style={{ color: "#000" }}> Sign Up  </Text>
+                                <Text style={{ color: "#000",fontFamily: " OpenSans-Regular", }}> Sign Up  </Text>
                             </Button>
                             </View>
                              </View>

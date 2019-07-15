@@ -214,7 +214,7 @@ export default class Chat extends Component {
     render() {
         return (
             <ImageBackground source={require("../../../../assets/maggie/Screenshot_8.jpg")}
-                blurRadius={Platform.OS == 'ios' ? 1 : 6}
+                // blurRadius={Platform.OS == 'ios' ? 1 : 6}
                 style={{ width: '100%', height: '100%' }}>
 
                 <View
