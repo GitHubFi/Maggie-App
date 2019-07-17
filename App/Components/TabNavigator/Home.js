@@ -285,7 +285,7 @@ export default class Home extends Component {
 
                                         }}
                                         onPress={() => {
-                                            this.props.navigation.navigate("video");
+                                            this.props.navigation.navigate("YoutubeVideos");
                                         }}
                                     >
                                         <Image

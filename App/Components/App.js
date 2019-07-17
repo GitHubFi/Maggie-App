@@ -30,7 +30,7 @@ import Icon from "react-native-vector-icons/Ionicons";
 import About from './TabNavigator/MaggieContainer/About'
 import Services from './TabNavigator/MaggieContainer/Services'
 import Gallery from './TabNavigator/MaggieContainer/Gallery'
-import Videos from './TabNavigator/MaggieContainer/Videos'
+// import Videos from './TabNavigator/MaggieContainer/Videos'
 import Price from './TabNavigator/MaggieContainer/Price'
 import Classes from './TabNavigator/MaggieContainer/Classes'
 import BookAppointment from './TabNavigator/MaggieContainer/BookAppointment'
@@ -39,6 +39,7 @@ import Privacy from './TabNavigator/MaggieContainer/Privacy'
 import ForgetPassword from './TabNavigator/MaggieContainer/ForgetPassword'
 import Notification from './TabNavigator/MaggieContainer/Notification'
 import Web from "./TabNavigator/MaggieContainer/Web"
+import YoutubeVideos from './TabNavigator/MaggieContainer/YoutubeVideos'
 
 
 
@@ -53,7 +54,7 @@ const AuthStackNavigator = createStackNavigator(
     about:About,
     services:Services,
     gallery:Gallery,
-    video:Videos,
+    // video:Videos,
     price:Price,
     classes:Classes,
     bookappointment:BookAppointment,
@@ -63,6 +64,7 @@ const AuthStackNavigator = createStackNavigator(
     forgetpassword:ForgetPassword,
     Notification:Notification,
     Web:Web,
+    YoutubeVideos:YoutubeVideos
     
   },
   {

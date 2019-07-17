@@ -22,8 +22,22 @@ export default class Chat extends Component {
             //   },
             textMessage: "",
             messageList: [],
-           
+            Admin: [],
+            AdminId: null
+
         };
+        firebase
+            .database()
+            .ref("Maggie/Admin")
+            .on("child_added", value => {
+                this.setState(prevState => {
+                    return {
+                        Admin: [...prevState.Admin, value.val()],
+                        AdminId: value.val().uid
+                    };
+                });
+                console.log(value.val().uid, "Admin Data")
+            })
     }
     static navigationOptions = ({ navigation }) => {
         return {
@@ -92,7 +106,7 @@ export default class Chat extends Component {
         result += (d.getMinutes() < 10 ? "0" : "") + d.getMinutes();
 
 
-     
+
         // if (c.getDay() !== d.getDay()) {
         //     result = d.getDay() + "" + d.getMonth() + "" + result;
         // }
@@ -107,14 +121,31 @@ export default class Chat extends Component {
             .database()
             .ref("Maggie/messages")
             .child(user)
+            .child(this.state.AdminId)
             .on("child_added", value => {
                 this.setState(prevState => {
                     return {
                         messageList: [...prevState.messageList, value.val()]
                     };
                 });
+                console.log(value, 'Saad MESAHEDF')
             });
+
+        firebase
+            .database()
+            .ref("Maggie/Admin")
+            .on("child_added", value => {
+                this.setState(prevState => {
+                    return {
+                        Admin: [...prevState.Admin, value.val()],
+                        AdminId: value.val().uid
+                    };
+                });
+                console.log(value.val().uid, "Admin Data")
+            })
     }
+
+
     sendMessage = async () => {
         let user = await AsyncStorage.getItem('User');
         if (this.state.textMessage.length > 0) {
@@ -122,6 +153,7 @@ export default class Chat extends Component {
                 .database()
                 .ref("Maggie/messages")
                 .child(user)
+                .child(this.state.AdminId)
                 .push().key;
             console.log(msgId)
             let updates = {};
@@ -131,10 +163,10 @@ export default class Chat extends Component {
                 from: user
             };
             updates[
-                `Maggie/messages/${user}/${msgId}`
+                `Maggie/messages/${user}/${this.state.AdminId}/${msgId}`
             ] = message;
             updates[
-                `Maggie/messages/${user}/${msgId}`
+                `Maggie/messages/${this.state.AdminId}/${user}/${msgId}`
             ] = message;
 
             firebase
@@ -151,15 +183,22 @@ export default class Chat extends Component {
         return (
             <View style={{
                 width: "90%",
-                alignSelf: item.from === this.props.currentUser ? "flex-start" : "flex-end",
-                backgroundColor: item.from === this.props.currentUser ? "#fff" : "#fff",
+                alignSelf: item.from === this.state.AdminId ? "flex-start" : "flex-end",
+                backgroundColor: item.from === this.state.AdminId ? "#deeafc" : "#fff",
 
-                borderBottomLeftRadius: 30,
-                borderBottomRightRadius: 10,
+                borderBottomLeftRadius: item.from === this.state.AdminId ? 0 : 20,
+                borderBottomRightRadius: item.from === this.state.AdminId ? 20 : 0,
 
                 marginBottom: 10,
-                borderTopRightRadius: -20,
-                borderTopLeftRadius: 30,
+                // borderTopRightRadius: -20,
+                borderTopLeftRadius: item.from === this.state.AdminId ? 30 : 0,
+
+                borderTopRightRadius: item.form === this.state.AdminId? 30:0,
+                
+                // borderTopRightRadius
+
+                //for user message
+
 
 
 
@@ -188,7 +227,7 @@ export default class Chat extends Component {
                     }}
                 >
                     {this.convertTime(item.time)}{"  "}
-                   
+
                     <Text
                         style={{
                             color: "#000",
@@ -212,6 +251,7 @@ export default class Chat extends Component {
 
     }
     render() {
+        console.log(this.state.messageList, "HI MERAJ")
         return (
             <ImageBackground source={require("../../../../assets/maggie/Screenshot_8.jpg")}
                 // blurRadius={Platform.OS == 'ios' ? 1 : 6}
@@ -292,8 +332,8 @@ export default class Chat extends Component {
 
 const styles = StyleSheet.flatten({});
 function mapStateToProps(state) {
-    console.log(state.authReducer.MaggieUser, '""""""""""MaggieUser"""""""""""""""')
-    console.log(state.authReducer.signuperror, "----------------signuperror-----------------------")
+
+    console.log(state.authReducer.MaggieUser, "////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////")
     return {
         MaggieUser: state.authReducer.MaggieUser,
         signuperror: state.authReducer.signuperror,

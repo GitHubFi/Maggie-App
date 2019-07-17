@@ -7,14 +7,14 @@ let INITIAL_STATE = {
   currentUser: {},
   userID: "",
   phoneNumber: "",
- 
+  MaggieUser: null,
   signuperror: '',
   signInerror: null,
   maggieuser: {}
 };
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-// for sign in action
+    // for sign in action
     case actionTypes.SIGNIN_PROGRESS:
       return { ...state, isProgress: true };
 

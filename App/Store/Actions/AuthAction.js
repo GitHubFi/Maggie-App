@@ -57,12 +57,12 @@ export function signinFunc(SignInObj, path) {
         //  await AsyncStorage.setItem('User', user);
         console.log(user, "///////////////////////////////////////////////////////////////////////")
         path.navigate('Homege');
-
-        let obj = {
-          // name: name,
-          uid: user.uid,
-          email: user.email
-        }
+        let obj = user.uid
+        // let obj = {
+        //   // name: name,
+        //   uid: user.uid,
+        //   email: user.email
+        // }
         dispatch(signInSucced(obj));
         // console.log("1234455667789900----", obj)
 
