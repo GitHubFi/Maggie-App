@@ -71,7 +71,7 @@ class SignIn extends Component {
     } else if (password.toString().length < 8 || password === '') {
       ToastAndroid.show("Password must be of 8 characters", ToastAndroid.SHORT);
       return;
-    } else if (this.props.isError === true) {
+    } else if (this.props.signInerror) {
       Alert.alert(
         '',
         this.props.signInerror,
